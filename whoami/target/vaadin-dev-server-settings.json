@@ -1,0 +1,17 @@
+{
+  "frontendFolder": "C:/Users/Peter/Documents/Sync/SyncDokumente/FH/MA/2. Semester/SQS/Repo/Projekt 2024/WhoAmI/whoami/frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "C:/Users/Peter/Documents/Sync/SyncDokumente/FH/MA/2. Semester/SQS/Repo/Projekt 2024/WhoAmI/whoami/frontend/generated/jar-resources",
+  "staticOutput": "target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "target/classes/META-INF/VAADIN/webapp/../config/",
+  "frontendBundleOutput": "target/classes/META-INF/VAADIN/webapp/",
+  "devBundleOutput": "C:/Users/Peter/Documents/Sync/SyncDokumente/FH/MA/2. Semester/SQS/Repo/Projekt 2024/WhoAmI/whoami/target/dev-bundle/webapp",
+  "devBundleStatsOutput": "C:/Users/Peter/Documents/Sync/SyncDokumente/FH/MA/2. Semester/SQS/Repo/Projekt 2024/WhoAmI/whoami/target/dev-bundle/config",
+  "jarResourcesFolder": "C:/Users/Peter/Documents/Sync/SyncDokumente/FH/MA/2. Semester/SQS/Repo/Projekt 2024/WhoAmI/whoami/frontend/generated/jar-resources",
+  "themeName": "",
+  "clientServiceWorkerSource": "C:\\Users\\Peter\\Documents\\Sync\\SyncDokumente\\FH\\MA\\2. Semester\\SQS\\Repo\\Projekt 2024\\WhoAmI\\whoami\\target\\sw.ts",
+  "pwaEnabled": false,
+  "offlineEnabled": false,
+  "offlinePath": "'offline.html'"
+}
