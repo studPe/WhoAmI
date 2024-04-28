@@ -19,3 +19,19 @@ def get_random_name():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+def test_load_names():
+    assert load_names() == ['Alice', 'Bob', 'Charlie']
+
+def test_get_random_name():
+    response = app.test_client().get('/random-name')
+    assert response.status_code == 200
+    data = json.loads(response.data)
+    assert data.get('name') in ['Alice', 'Bob', 'Charlie']
+
+    # Test when the list is empty
+    app.config['names'] = []
+    response = app.test_client().get('/random-name')
+    assert response.status_code == 404
+    data = json.loads(response.data)
+    assert data.get('error') == 'No names available'
