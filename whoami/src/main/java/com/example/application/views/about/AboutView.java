@@ -1,6 +1,6 @@
 package com.example.application.views.about;
 
-import com.example.application.views.MainLayout;
+import com.example.application.MainView;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
@@ -10,7 +10,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
 
 @PageTitle("About")
-@Route(value = "about", layout = MainLayout.class)
+@Route(value = "about", layout = MainView.class)
 public class AboutView extends VerticalLayout {
 
     public AboutView() {

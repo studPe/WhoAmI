@@ -1,13 +1,12 @@
 package com.example.application.views.game;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import com.example.application.Player;
-import com.example.application.Application;
+
 import java.util.List;
 
-import com.example.application.views.MainLayout;
+import com.example.application.MainView;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -16,12 +15,9 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.router.RouteAlias;
 
 @PageTitle("Game")
-@Route(value = "Game", layout = MainLayout.class)
-@RouteAlias(value = "", layout = MainLayout.class)
-
+@Route(value = "Game", layout = MainView.class)
 public class GameView extends HorizontalLayout {
 
     private TextField name;

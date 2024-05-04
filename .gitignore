@@ -1,4 +1,4 @@
-/target/
+whoami/target/
 .gradle
 whoami/build/
 !**/src/main/**/target/

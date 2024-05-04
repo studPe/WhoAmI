@@ -1,8 +1,8 @@
-package com.example.application.views;
+package com.example.application;
 
 
-import com.example.application.views.about.AboutView;
 import com.example.application.views.game.GameView;
+import com.example.application.views.about.AboutView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.html.Div;
@@ -12,6 +12,8 @@ import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Nav;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.html.UnorderedList;
+import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility.AlignItems;
 import com.vaadin.flow.theme.lumo.LumoUtility.BoxSizing;
@@ -28,12 +30,13 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 import com.vaadin.flow.theme.lumo.LumoUtility.Whitespace;
 import com.vaadin.flow.theme.lumo.LumoUtility.Width;
-import org.vaadin.lineawesome.LineAwesomeIcon;
 
 /**
  * The main view is a top-level placeholder for other views.
  */
-public class MainLayout extends AppLayout {
+
+@Route("") // map view to the root
+public class MainView extends AppLayout {
 
     /**
      * A simple navigation item component, based on ListItem element.
@@ -67,7 +70,7 @@ public class MainLayout extends AppLayout {
 
     }
 
-    public MainLayout() {
+    public MainView() {
         addToNavbar(createHeaderContent());
         setDrawerOpened(false);
     }
@@ -102,9 +105,9 @@ public class MainLayout extends AppLayout {
 
     private MenuItemInfo[] createMenuItems() {
         return new MenuItemInfo[]{ //
-                new MenuItemInfo("Game", LineAwesomeIcon.GLOBE_SOLID.create(), GameView.class), //
+                new MenuItemInfo("Game", VaadinIcon.GAMEPAD.create(), GameView.class), //
 
-                new MenuItemInfo("About", LineAwesomeIcon.FILE.create(), AboutView.class), //
+                new MenuItemInfo("About", VaadinIcon.COMMENT.create(), AboutView.class), //
 
         };
     }

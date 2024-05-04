@@ -15,7 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-@NpmPackage(value = "@fontsource/barlow-condensed", version = "4.5.0")
+
 @Theme(value = "wai", variant = Lumo.DARK)
 public class Application implements AppShellConfigurator {
 
