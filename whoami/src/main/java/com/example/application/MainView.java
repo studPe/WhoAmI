@@ -4,7 +4,12 @@ package com.example.application;
 import com.example.application.views.game.GameView;
 import com.example.application.views.about.AboutView;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Header;
@@ -13,6 +18,10 @@ import com.vaadin.flow.component.html.Nav;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.NumberField;
+import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility.AlignItems;
@@ -30,14 +39,24 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 import com.vaadin.flow.theme.lumo.LumoUtility.Whitespace;
 import com.vaadin.flow.theme.lumo.LumoUtility.Width;
+import com.vaadin.flow.dom.Element;
 
 /**
  * The main view is a top-level placeholder for other views.
  */
 
 @Route("") // map view to the root
-public class MainView extends AppLayout {
+public class MainView extends AppLayout implements BeforeEnterObserver {
 
+    @Override
+    public void beforeEnter(BeforeEnterEvent event) {
+        // Navigate to GameView by default if no other route is provided
+        if (event.getNavigationTarget() == null || event.getNavigationTarget().equals(MainView.class)) {
+            event.rerouteTo(GameView.class);
+            //openWelcomeDialog();
+            //UI.getCurrent().getPage().reload();
+        }
+    }
     /**
      * A simple navigation item component, based on ListItem element.
      */
@@ -73,6 +92,7 @@ public class MainView extends AppLayout {
     public MainView() {
         addToNavbar(createHeaderContent());
         setDrawerOpened(false);
+        openWelcomeDialog();
     }
 
     private Component createHeaderContent() {
@@ -84,7 +104,9 @@ public class MainView extends AppLayout {
 
         H1 appName = new H1("WhoAmI");
         appName.addClassNames(Margin.Vertical.MEDIUM, Margin.End.AUTO, FontSize.LARGE);
-        layout.add(appName);
+        Button gameButton = new Button("New Game", event -> {openWelcomeDialog()
+        ;});
+        layout.add(appName,gameButton);
 
         Nav nav = new Nav();
         nav.addClassNames(Display.FLEX, Overflow.AUTO, Padding.Horizontal.MEDIUM, Padding.Vertical.XSMALL);
@@ -101,6 +123,22 @@ public class MainView extends AppLayout {
 
         header.add(layout, nav);
         return header;
+    }
+    private void openWelcomeDialog() {
+        Dialog welcomeDialog = new Dialog();
+        NumberField gameIdField = new NumberField();
+        ComboBox<String> comboBox = new ComboBox<>("Select a name");
+        comboBox.setItems("Alice", "Bob", "Charlie", "Dana");
+        welcomeDialog.add(new VerticalLayout(new H1("Welcome!"), new Span("Thanks for visiting our WhoAmI, please enter your Game-ID."),gameIdField,comboBox));
+        Button closeButton = new Button("Close", event -> {
+            double gameId = gameIdField.getValue();
+            UI.getCurrent().getPage().executeJs("localStorage.setItem($0, $1);", "gameid", gameId);
+            String vipName = comboBox.getValue();
+            UI.getCurrent().getPage().executeJs("localStorage.setItem($0, $1);", "vipName", vipName);
+            welcomeDialog.close();
+        });
+        welcomeDialog.add(closeButton);
+        welcomeDialog.open();
     }
 
     private MenuItemInfo[] createMenuItems() {
