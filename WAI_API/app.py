@@ -16,6 +16,16 @@ def get_random_name():
         return jsonify({'name': random.choice(names)})
     else:
         return jsonify({'error': 'No names available'}), 404
+    
+@app.route('/random-name/<int:seed>', methods=['GET'])
+def get_random_name_seed(seed):
+    names = load_names()
+    if names and len(names) >= 4:  # Check if the list has at least four names
+        random.seed(seed)  # Set the seed for the random number generator
+        random_names = random.sample(names, 4)  # Get four random names
+        return jsonify({'name': random_names})
+    else:
+        return jsonify({'error': 'No names available'}), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
