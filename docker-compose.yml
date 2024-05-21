@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  vaadin-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.vaadin
+    ports:
+      - "8080:8080"
+    depends_on:
+      - flask-backend
+
+  flask-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.flask
+    ports:
+      - "5000:5000"

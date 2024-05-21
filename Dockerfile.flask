@@ -1,0 +1,18 @@
+# Dockerfile for Flask Backend
+FROM python:3.8-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the Flask project
+COPY WAI_API /app
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose the port
+EXPOSE 5000
+
+# Start the Flask application
+CMD ["python", "app.py"]
+
