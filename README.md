@@ -8,6 +8,17 @@ Die hier beschriebene Anwendung wurde für die Veranstaltung SQS im Sommersemest
 
 Die WhoAmI Webanwendung ist eine interaktive Webapp, die Flask für das Backend und Vaadin für das Frontend nutzt. Mit dieser Webapp kann "Wer bin ich ?" / bzw. "20 Questions" im Browser gespielt werden.
 
+Ziel der Anwendung ist die Entwicklung einer Anwendung, die abgesichert ist Anhand einiger der Qualitätsmerkmale nach ISO 25010. Die Anwendung muss, dazu auch einen externe Schnittstelle ansprechen, diese API wurde für den Zweck der Anwendung eingens mit Flask umgesetzt.
+
+| Use Case | Beschreibung | Ziele | Beteiligte |
+|----------|---------------|-------|------------|
+| **1. Spiel starten** | Ein Spieler startet ein neues Spiel, indem er einen Spielernamen und eine GameId eingibt. | - Einfache Spielinitialisierung<br>- Netzwerkfähiges Spiel | Spieler |
+| **2. Spiel beitreten** | Ein weiterer Spieler tritt einem bestehenden Spiel bei, indem er die GameId und seinen Spielernamen eingibt. | - Multi-User-Interaktivität<br>- Spielbarkeit über das Netzwerk | Spieler |
+| **3. Fragen stellen** | Spieler stellen abwechselnd Ja/Nein-Fragen, um die Identität der gesuchten Person zu erraten. | - Interaktive Benutzererfahrung<br>- Logische Entscheidungsfindung fördern | Spieler |
+| **4. Antwort erhalten** | Der Gegenspieler beantwortet die gestellte Frage mit "Ja" oder "Nein". | - Klare Kommunikation<br>- Echtzeit-Interaktion | Spieler |
+| **5. Spiel beenden** | Das Spiel endet, wenn ein Spieler die Identität korrekt errät oder die maximale Anzahl an Fragen erreicht ist. | - Abschließende Spielphase<br>- Anzeige des Ergebnisses | Spieler |
+
+
 ## Technologie-Stack
 
 - **Backend:** Flask (Python)
@@ -25,45 +36,15 @@ Die WhoAmI Webanwendung ist eine interaktive Webapp, die Flask für das Backend 
 4. **Verwendung von gemockten JSON-Dateien:** Statt einer traditionellen Datenbank werden JSON-Dateien zur Datenspeicherung verwendet, um Flexibilität und Einfachheit in der Entwicklungsphase zu gewährleisten.
 5. **Docker zur Containerisierung:** Docker wird genutzt, um Konsistenz, Portabilität und Isolation der Anwendungsumgebungen zu gewährleisten.
 
-## Aufgabenstellung
-
-<div class="formalpara-title">
-
-**Inhalt**
-
-</div>
-
-Ziel der Anwendung ist die Entwicklung einer Anwendung, die abgesichert ist Anhand einiger der Qualitätsmerkmale nach ISO 25010. Die Anwendung muss, dazu auch einen externe Schnittstelle ansprechen, diese API wurde für den Zweck der Anwendung eingens mit Flask umgesetzt.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Ein Spiel wie WhoAmI in Vaadin, wurde ausgewählt besonders, um sich Qualitätsmerkmale zu konzentrieren, den User direkt betreffen. Intressant an WhoAmI ist auch, dass mit den richtigen Netzwerkeinstellungen tatsächlich übers Netzwerk gespielt werden kann, dazu muss sich nur auf Spielernamen & GameId geeinigt werden. Zusätzlich sollen s
-
-Aus Sicht der späteren Nutzung ist die Unterstützung einer fachlichen
-Aufgabe oder Verbesserung der Qualität der eigentliche Beweggrund, ein
-neues System zu schaffen oder ein bestehendes zu modifizieren.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Kurze textuelle Beschreibung, eventuell in tabellarischer Use-Case Form.
-Sofern vorhanden, sollte die Aufgabenstellung Verweise auf die
-entsprechenden Anforderungsdokumente enthalten.
-
-Halten Sie diese Auszüge so knapp wie möglich und wägen Sie Lesbarkeit
-und Redundanzfreiheit gegeneinander ab.
-
-Siehe [Anforderungen und Ziele](https://docs.arc42.org/section-1/) in
-der online-Dokumentation (auf Englisch!).
 
 ## Qualitätsziele
+
+| Qualitätskriterium | Beschreibung | Ziele | Maßnahmen |
+|---------------------|---------------|-------|-----------|
+| **1. Reliability - Zuverlässigkeit** | Die Verlässlichkeit und Betriebsfähigkeit der Anwendung, um Ausfälle und Fehler zu minimieren. | - Hohe Verfügbarkeit<br>- Minimale Ausfallzeiten<br>- Fehlerfreiheit | - Umfangreiche Testabdeckung<br>- Verwendung von Docker für isolierte Umgebungen<br>- Logging und Monitoring |
+| **2. Portability - Übertragbarkeit** | Die Leistungsfähigkeit der Anwendung in Bezug auf Reaktionszeiten und Ressourcenverbrauch. | - Schnelle Ladezeiten<br>- Geringe Latenz<br>- Effiziente Ressourcennutzung | - Optimierung der Backend-APIs<br- Caching-Mechanismen<br>- Ressourcenoptimierung durch Docker |
+| **3. Usability - Benutzerfreundlichkeit** | Die Benutzerfreundlichkeit der Anwendung, einschließlich Benutzeroberfläche, Navigation und Interaktion. | - Einfach zu bedienende UI<br>- Intuitive Navigation<br>- Positive Nutzererfahrung | - Verwendung von Vaadin für eine robuste UI<br>- Klare und intuitive Menüs und Buttons<br>- User Feedback Loops |
+
 
 <div class="formalpara-title">
 
