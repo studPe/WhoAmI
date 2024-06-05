@@ -4,8 +4,6 @@
 
 # Einführung und Ziele
 
-Die hier beschriebene Anwendung wurde für die Veranstaltung SQS im Sommersemester 2024 entwickelt.
-
 Die WhoAmI Webanwendung ist eine interaktive Webapp, die Flask für das Backend und Vaadin für das Frontend nutzt. Mit dieser Webapp kann "Wer bin ich ?" / bzw. "20 Questions" im Browser gespielt werden.
 
 Ziel der Anwendung ist die Entwicklung einer Anwendung, die abgesichert ist Anhand einiger der Qualitätsmerkmale nach ISO 25010. Die Anwendung muss, dazu auch einen externe Schnittstelle ansprechen, diese API wurde für den Zweck der Anwendung eingens mit Flask umgesetzt.
@@ -13,18 +11,13 @@ Ziel der Anwendung ist die Entwicklung einer Anwendung, die abgesichert ist Anha
 | Use Case | Beschreibung | Ziele | Beteiligte |
 |----------|---------------|-------|------------|
 | **1. Spiel starten** | Ein Spieler startet ein neues Spiel, indem er einen Spielernamen und eine GameId eingibt. | - Einfache Spielinitialisierung<br>- Netzwerkfähiges Spiel | Spieler |
-| **2. Spiel beitreten** | Ein weiterer Spieler tritt einem bestehenden Spiel bei, indem er die GameId und seinen Spielernamen eingibt. | - Multi-User-Interaktivität<br>- Spielbarkeit über das Netzwerk | Spieler |
-| **3. Fragen stellen** | Spieler stellen abwechselnd Ja/Nein-Fragen, um die Identität der gesuchten Person zu erraten. | - Interaktive Benutzererfahrung<br>- Logische Entscheidungsfindung fördern | Spieler |
-| **4. Antwort erhalten** | Der Gegenspieler beantwortet die gestellte Frage mit "Ja" oder "Nein". | - Klare Kommunikation<br>- Echtzeit-Interaktion | Spieler |
-| **5. Spiel beenden** | Das Spiel endet, wenn ein Spieler die Identität korrekt errät oder die maximale Anzahl an Fragen erreicht ist. | - Abschließende Spielphase<br>- Anzeige des Ergebnisses | Spieler |
+| **2. Antwort überprüfen** | WhoAmI überprüft, ob die Antwort korrekt ist. | - Klare Kommunikation<br>- Echtzeit-Interaktion | Spieler |
+| **3. Spielinformationen einsehen** | Spieler sollte sich über die Spielregeln informieren können. | - Einrichtung einer About-Page | Spieler |
+| **4. Spiel neustarten** | Spieler eröffnet ein neues Spiel. | - Zurücksetzen des aktuellen Spielzustands | Spieler |
 
 
-## Technologie-Stack
 
-- **Backend:** Flask (Python)
-- **Frontend:** Vaadin (Java)
-- **Datenmanagement:** Gemockte JSON-Dateien
-- **Containerisierung:** Docker
+
 
 
 
@@ -41,133 +34,22 @@ Ziel der Anwendung ist die Entwicklung einer Anwendung, die abgesichert ist Anha
 
 | Qualitätskriterium | Beschreibung | Ziele | Maßnahmen |
 |---------------------|---------------|-------|-----------|
-| **1. Reliability - Zuverlässigkeit** | Die Verlässlichkeit und Betriebsfähigkeit der Anwendung, um Ausfälle und Fehler zu minimieren. | - Hohe Verfügbarkeit<br>- Minimale Ausfallzeiten<br>- Fehlerfreiheit | - Umfangreiche Testabdeckung<br>- Verwendung von Docker für isolierte Umgebungen<br>- Logging und Monitoring |
-| **2. Portability - Übertragbarkeit** | Die Leistungsfähigkeit der Anwendung in Bezug auf Reaktionszeiten und Ressourcenverbrauch. | - Schnelle Ladezeiten<br>- Geringe Latenz<br>- Effiziente Ressourcennutzung | - Optimierung der Backend-APIs<br- Caching-Mechanismen<br>- Ressourcenoptimierung durch Docker |
-| **3. Usability - Benutzerfreundlichkeit** | Die Benutzerfreundlichkeit der Anwendung, einschließlich Benutzeroberfläche, Navigation und Interaktion. | - Einfach zu bedienende UI<br>- Intuitive Navigation<br>- Positive Nutzererfahrung | - Verwendung von Vaadin für eine robuste UI<br>- Klare und intuitive Menüs und Buttons<br>- User Feedback Loops |
-
-
-<div class="formalpara-title">
-
-**Inhalt**
-
-</div>
-
-Die Top-3 bis Top-5 der Qualitätsanforderungen für die Architektur,
-deren Erfüllung oder Einhaltung den maßgeblichen Stakeholdern besonders
-wichtig sind. Gemeint sind hier wirklich Qualitätsziele, die nicht
-unbedingt mit den Zielen des Projekts übereinstimmen. Beachten Sie den
-Unterschied.
-
-Hier ein Überblick möglicher Themen (basierend auf dem ISO 25010
-Standard):
-
-![Kategorien von
-Qualitätsanforderungen](images/01_2_iso-25010-topics-DE.drawio.png)
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Weil Qualitätsziele grundlegende Architekturentscheidungen oft
-maßgeblich beeinflussen, sollten Sie die für Ihre Stakeholder relevanten
-Qualitätsziele kennen, möglichst konkret und operationalisierbar.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Tabellarische Darstellung der Qualitätsziele mit möglichst konkreten
-Szenarien, geordnet nach Prioritäten.
+| **1. Reliability - Zuverlässigkeit** | Die Verlässlichkeit und Betriebsfähigkeit der Anwendung, um Ausfälle und Fehler zu minimieren. | - Hohe Resilienz gegenüber User-Eingaben <br>- Wiederstandsfähigkeit gegenüber Hoherlast | - Umfangreiche Testabdeckung<br>- Lasttestung mit Locust<br>- Logging und Monitoring |
+| **2. Portability - Übertragbarkeit** | Flexibilität einer Anwendung was die Laufzeitumgebung angeht. |- Verringerung von externen Abhänigkeiten<br>- Effiziente Ressourcennutzung | - Verwendung von Docker für isolierte Umgebungen <br> |
+| **3. Usability - Benutzerfreundlichkeit** | Die Benutzerfreundlichkeit der Anwendung, einschließlich Benutzeroberfläche, Navigation und Interaktion. | - Einfach zu bedienende UI<br>- Intuitive Navigation<br>- Schnelle Ladezeiten | - Manuelle UI Prüfungen <br>- Integrationtest<br> |
 
 ## Stakeholder
 
-<div class="formalpara-title">
-
-**Inhalt**
-
-</div>
-
-Expliziter Überblick über die Stakeholder des Systems – über alle
-Personen, Rollen oder Organisationen –, die
-
--   die Architektur kennen sollten oder
-
--   von der Architektur überzeugt werden müssen,
-
--   mit der Architektur oder dem Code arbeiten (z.B. Schnittstellen
-    nutzen),
-
--   die Dokumentation der Architektur für ihre eigene Arbeit benötigen,
-
--   Entscheidungen über das System und dessen Entwicklung treffen.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Sie sollten die Projektbeteiligten und -betroffenen kennen, sonst
-erleben Sie später im Entwicklungsprozess Überraschungen. Diese
-Stakeholder bestimmen unter anderem Umfang und Detaillierungsgrad der
-von Ihnen zu leistenden Arbeit und Ergebnisse.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Tabelle mit Rollen- oder Personennamen, sowie deren Erwartungshaltung
-bezüglich der Architektur und deren Dokumentation.
 
 | Rolle        | Kontakt        | Erwartungshaltung |
 |--------------|----------------|-------------------|
-| *\<Rolle-1>* | *\<Kontakt-1>* | *\<Erwartung-1>*  |
-| *\<Rolle-2>* | *\<Kontakt-2>* | *\<Erwartung-2>*  |
+| *Player* | *User-Befragungen* | *Einfaches & positives Spielerlebnis*  |
+| *Entwickler* | *pxxxx.sxxxx@stud.xxxx.de* | *Schnelle Entwicklung, klar definierte Ziele*  |
+| *Prüfer* | *xxx@xxx.de* | *Gut dokumentiertes Projekt mit klaren Vor- & Nachteilen*  |
 
 # Randbedingungen
 
-<div class="formalpara-title">
-
-**Inhalt**
-
-</div>
-
-Randbedingungen und Vorgaben, die ihre Freiheiten bezüglich Entwurf,
-Implementierung oder Ihres Entwicklungsprozesses einschränken. Diese
-Randbedingungen gelten manchmal organisations- oder firmenweit über die
-Grenzen einzelner Systeme hinweg.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Für eine tragfähige Architektur sollten Sie genau wissen, wo Ihre
-Freiheitsgrade bezüglich der Entwurfsentscheidungen liegen und wo Sie
-Randbedingungen beachten müssen. Sie können Randbedingungen vielleicht
-noch verhandeln, zunächst sind sie aber da.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Einfache Tabellen der Randbedingungen mit Erläuterungen. Bei Bedarf
-unterscheiden Sie technische, organisatorische und politische
-Randbedingungen oder übergreifende Konventionen (beispielsweise
-Programmier- oder Versionierungsrichtlinien, Dokumentations- oder
-Namenskonvention).
-
-Siehe [Randbedingungen](https://docs.arc42.org/section-2/) in der
-online-Dokumentation (auf Englisch!).
+Die hier beschriebene Anwendung wurde für die Veranstaltung SQS im Sommersemester 2024 entwickelt.
 
 # Kontextabgrenzung
 
