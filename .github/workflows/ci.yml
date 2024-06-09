@@ -15,10 +15,10 @@ jobs:
           python-version: '3.8'
       - name: Install dependencies
         run: |
+          cd WAI_API
           python -m pip install --upgrade pip  # Upgrade pip (optional)
           pip install -r requirements.txt  # Replace with your requirements file path
       - name: Run tests
-      
-        cd WAI_API
         run: |
+          cd WAI_API
           python test_app.py  # Adjust the command if your test script has arguments
