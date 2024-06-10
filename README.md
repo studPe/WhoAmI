@@ -1,4 +1,5 @@
 # WhoAmI Webanwendung
+![Uploading WhoAmI.png…]()
 
 **SQS SoSe 2024**
 
