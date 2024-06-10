@@ -133,6 +133,10 @@ Kommunikationsbeziehung, Eingabe, Ausgabe.
 **\<optional: Erläuterung der externen fachlichen Schnittstellen>**
 
 ## Technischer Kontext
+Ursprünglich geplanter Umfang:
+
+![signal-2024-06-09-222603](https://github.com/studPe/WhoAmI/assets/158460492/2b3fa6d3-ca6f-4326-8e85-27a23129a42e)
+
 
 <div class="formalpara-title">
 
