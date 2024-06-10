@@ -1,5 +1,6 @@
 # WhoAmI Webanwendung
-![Uploading WhoAmI.png…]()
+![WhoAmI](https://github.com/studPe/WhoAmI/assets/158460492/7515a185-aac5-4fd4-8d3e-746895c84508)
+
 
 **SQS SoSe 2024**
 
