@@ -124,7 +124,7 @@ public class MainView extends AppLayout implements BeforeEnterObserver {
         header.add(layout, nav);
         return header;
     }
-    private void openWelcomeDialog() {
+    public void openWelcomeDialog() {
         Dialog welcomeDialog = new Dialog();
         NumberField gameIdField = new NumberField();
         ComboBox<String> comboBox = new ComboBox<>("Select a name");
