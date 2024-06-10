@@ -143,6 +143,16 @@ public class MainView extends AppLayout implements BeforeEnterObserver {
         welcomeDialog.open();
     }
 
+    public static void offlineDialog() {
+        Dialog offlineDialog = new Dialog();
+        offlineDialog.add(new VerticalLayout(new H1("Oh no!"), new Span("API is offline.")));
+        Button closeButton = new Button("Close", event -> {
+            offlineDialog.close();
+        });
+        offlineDialog.add(closeButton);
+        offlineDialog.open();
+    }
+
     private MenuItemInfo[] createMenuItems() {
         return new MenuItemInfo[]{ //
                 new MenuItemInfo("Game", VaadinIcon.GAMEPAD.create(), GameView.class), //

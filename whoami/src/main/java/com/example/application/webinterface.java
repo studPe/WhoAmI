@@ -1,16 +1,22 @@
 package com.example.application;
 
+import com.example.application.MainView;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class webinterface {
     private static final String API_URL = "http://127.0.0.1:5000/random-name";
+    private static final Logger log = LoggerFactory.getLogger(webinterface.class);
 
     public static String getRandomName() throws Exception {
         URL url = new URL(API_URL);
@@ -36,12 +42,19 @@ public class webinterface {
     public static String[] getRandomName(int seed) throws Exception {
         URL url = new URL(API_URL+"/"+seed);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.connect();
+        try{
+            conn.connect();
+        }
+        catch (ConnectException e){
+            com.example.application.MainView.offlineDialog();
+            return new String[]{"Leonardo DiDisconnectedCaprio","Meryl Can't-Streep-Online.","Taylor Can't-Swift.","Keanu Not-Connected-Reeves."};
+        }
 
         // Check if the connection is successful
         int responseCode = conn.getResponseCode();
         if (responseCode != 200) {
-            throw new RuntimeException("HttpResponseCode: " + responseCode);
+            System.out.println("HttpResponseCode: " + responseCode);
+            return new String[]{"NoConnection","NoConnection","NoConnection","NoConnection"};
         } else {
             // Read data from the input stream
             InputStream inputStream = conn.getInputStream();
