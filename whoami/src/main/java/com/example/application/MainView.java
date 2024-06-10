@@ -40,11 +40,13 @@ import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 import com.vaadin.flow.theme.lumo.LumoUtility.Whitespace;
 import com.vaadin.flow.theme.lumo.LumoUtility.Width;
 import com.vaadin.flow.dom.Element;
-
+import com.vaadin.flow.component.dependency.NpmPackage;
 /**
  * The main view is a top-level placeholder for other views.
  */
 
+
+@NpmPackage(value = "@fontsource/barlow-condensed", version = "latest")
 @Route("") // map view to the root
 public class MainView extends AppLayout implements BeforeEnterObserver {
 
