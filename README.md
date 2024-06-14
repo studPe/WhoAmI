@@ -54,46 +54,8 @@ Ziel der Anwendung ist die Entwicklung einer Anwendung, die abgesichert ist Anha
 Die hier beschriebene Anwendung wurde für die Veranstaltung SQS im Sommersemester 2024 entwickelt.
 
 # Kontextabgrenzung
+![Kontextdiagramm drawio](https://github.com/studPe/WhoAmI/assets/158460492/60d0b703-79f0-47fb-ab76-21197eea6900)
 
-<div class="formalpara-title">
-
-**Inhalt**
-
-</div>
-
-Die Kontextabgrenzung grenzt das System gegen alle Kommunikationspartner
-(Nachbarsysteme und Benutzerrollen) ab. Sie legt damit die externen
-Schnittstellen fest und zeigt damit auch die Verantwortlichkeit (scope)
-Ihres Systems: Welche Verantwortung trägt das System und welche
-Verantwortung übernehmen die Nachbarsysteme?
-
-Differenzieren Sie fachlichen (Ein- und Ausgaben) und technischen
-Kontext (Kanäle, Protokolle, Hardware), falls nötig.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Die fachlichen und technischen Schnittstellen zur Kommunikation gehören
-zu den kritischsten Aspekten eines Systems. Stellen Sie sicher, dass Sie
-diese komplett verstanden haben.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Verschiedene Optionen:
-
--   Diverse Kontextdiagramme
-
--   Listen von Kommunikationsbeziehungen mit deren Schnittstellen
-
-Siehe [Kontextabgrenzung](https://docs.arc42.org/section-3/) in der
-online-Dokumentation (auf Englisch!).
 
 ## Fachlicher Kontext
 
