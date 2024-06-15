@@ -19,19 +19,6 @@ Ziel der Anwendung ist die Entwicklung einer Anwendung, die abgesichert ist Anha
 
 
 
-
-
-
-
-## Architektur-Entscheidungen (ADRs) - Kurzbeschreibung 
-
-1. **Flask als Backend-Framework:** Flask wurde gewählt, um von seiner Einfachheit und Erweiterbarkeit zu profitieren.
-2. **Vaadin für das Frontend:** Vaadin wird verwendet, um eine robuste und interaktive Benutzeroberfläche bereitzustellen.
-3. **REST APIs für Backend-Frontend-Kommunikation:** REST APIs werden eingesetzt, um eine entkoppelte Kommunikation zwischen Flask und Vaadin zu ermöglichen.
-4. **Verwendung von gemockten JSON-Dateien:** Statt einer traditionellen Datenbank werden JSON-Dateien zur Datenspeicherung verwendet, um Flexibilität und Einfachheit in der Entwicklungsphase zu gewährleisten.
-5. **Docker zur Containerisierung:** Docker wird genutzt, um Konsistenz, Portabilität und Isolation der Anwendungsumgebungen zu gewährleisten.
-
-
 ## Qualitätsziele
 
 | Qualitätskriterium | Beschreibung | Ziele | Maßnahmen |
@@ -58,6 +45,14 @@ Die hier beschriebene Anwendung wurde für die Veranstaltung SQS im Sommersemest
 
 
 ## Fachlicher Kontext
+
+| Kommunikationsbeziehung     | Eingabe                                           | Ausgabe                                 |
+|-----------------------------|--------------------------------------------------|-----------------------------------------|
+| User (Spieler) -> System    | Benutzeraktionen (z.B. Klicks, Formulareingaben) | Benutzeroberflächenaktualisierungen     |
+| System -> Benutzer          | Benutzeroberflächenaktualisierungen              | Sichtbare Ergebnisse in der Anwendung   |
+| Entwickler ->System (Docker)| Code, Konfigurationsdateien                      | Isolierte Anwendungsumgebungen          |
+| System -> Entwickler        | Ausgabeport                                      | Ouput der Anwendungen  an Port          |
+
 
 <div class="formalpara-title">
 
@@ -695,52 +690,16 @@ der online-Dokumentation (auf Englisch).
 
 # Architekturentscheidungen
 
-<div class="formalpara-title">
+## (Ausführliche Beschreibungen sind im entsprechenden Ordner)
+| Nummer | ADR                                      | Begründung                                                                                           |
+|--------|------------------------------------------|------------------------------------------------------------------------------------------------------|
+| 1      | Flask als Backend-Framework              | Flask wurde gewählt, um von seiner Einfachheit und Erweiterbarkeit zu profitieren.                   |
+| 2      | Vaadin für das Frontend                  | Vaadin wird verwendet, um eine robuste und interaktive Benutzeroberfläche bereitzustellen.           |
+| 3      | REST APIs für Backend-Frontend-Kommunikation | REST APIs werden eingesetzt, um eine entkoppelte Kommunikation zwischen Flask und Vaadin zu ermöglichen. |
+| 4      | Verwendung von gemockten JSON-Dateien    | Statt einer traditionellen Datenbank werden JSON-Dateien zur Datenspeicherung verwendet, um Flexibilität und Einfachheit in der Entwicklungsphase zu gewährleisten. |
+| 5      | Docker zur Containerisierung             | Docker wird genutzt, um Konsistenz, Portabilität und Isolation der Anwendungsumgebungen zu gewährleisten. |
 
-**Inhalt**
 
-</div>
-
-Wichtige, teure, große oder riskante Architektur- oder
-Entwurfsentscheidungen inklusive der jeweiligen Begründungen. Mit
-"Entscheidungen" meinen wir hier die Auswahl einer von mehreren
-Alternativen unter vorgegebenen Kriterien.
-
-Wägen Sie ab, inwiefern Sie Entscheidungen hier zentral beschreiben,
-oder wo eine lokale Beschreibung (z.B. in der Whitebox-Sicht von
-Bausteinen) sinnvoller ist. Vermeiden Sie Redundanz. Verweisen Sie evtl.
-auf Abschnitt 4, wo schon grundlegende strategische Entscheidungen
-beschrieben wurden.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Stakeholder des Systems sollten wichtige Entscheidungen verstehen und
-nachvollziehen können.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Verschiedene Möglichkeiten:
-
--   ADR ([Documenting Architecture
-    Decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions))
-    für jede wichtige Entscheidung
-
--   Liste oder Tabelle, nach Wichtigkeit und Tragweite der
-    Entscheidungen geordnet
-
--   ausführlicher in Form einzelner Unterkapitel je Entscheidung
-
-Siehe [Architekturentscheidungen](https://docs.arc42.org/section-9/) in
-der arc42 Dokumentation (auf Englisch!). Dort finden Sie Links und
-Beispiele zum Thema ADR.
 
 # Qualitätsanforderungen
 
