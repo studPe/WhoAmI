@@ -703,66 +703,30 @@ der online-Dokumentation (auf Englisch).
 
 # Qualitätsanforderungen
 
-<div class="formalpara-title">
-
-**Inhalt**
-
-</div>
-
-Dieser Abschnitt enthält möglichst alle Qualitätsanforderungen als
-Qualitätsbaum mit Szenarien. Die wichtigsten davon haben Sie bereits in
-Abschnitt 1.2 (Qualitätsziele) hervorgehoben.
-
-Nehmen Sie hier auch Qualitätsanforderungen geringerer Priorität auf,
-deren Nichteinhaltung oder -erreichung geringe Risiken birgt.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Weil Qualitätsanforderungen die Architekturentscheidungen oft maßgeblich
-beeinflussen, sollten Sie die für Ihre Stakeholder relevanten
-Qualitätsanforderungen kennen, möglichst konkret und operationalisiert.
-
-<div class="formalpara-title">
-
-**Weiterführende Informationen**
-
-</div>
-
-Siehe [Qualitätsanforderungen](https://docs.arc42.org/section-10/) in
-der online-Dokumentation (auf Englisch!).
 
 ## Qualitätsbaum
 
-<div class="formalpara-title">
+![Qualitätsbaum drawio (2)](https://github.com/studPe/WhoAmI/assets/158460492/aa06b281-9c93-4bcf-bad7-767bb3b5f3f1)
 
-**Inhalt**
-
-</div>
-
-Der Qualitätsbaum (à la ATAM) mit Qualitätsszenarien an den Blättern.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Die mit Prioritäten versehene Baumstruktur gibt Überblick über
-die — oftmals zahlreichen — Qualitätsanforderungen.
-
--   Baumartige Verfeinerung des Begriffes „Qualität“, mit „Qualität“
-    oder „Nützlichkeit“ als Wurzel.
-
--   Mindmap mit Qualitätsoberbegriffen als Hauptzweige
-
-In jedem Fall sollten Sie hier Verweise auf die Qualitätsszenarien des
-folgenden Abschnittes aufnehmen.
 
 ## Qualitätsszenarien
+
+| Attribut                     | Szenario                                                                                     | Maßnahme                                              |
+|------------------------------|----------------------------------------------------------------------------------------------|-------------------------------------------------------|
+| Reliability - Zuverlässigkeit| Nutzungsszenario: Das System führt umfassende Tests durch, um die Zuverlässigkeit zu gewährleisten. | Unittest, End-to-End Tests, Manuelle Verifikation     |
+|                              | Änderungsszenario: Bei einer Änderung im Code wird das Testkonzept aktualisiert und erneut ausgeführt. | Umfassendes Testkonzept                               |
+|                              | Nutzungsszenario: Das System kann unter Last stabil bleiben und Anfragen effizient verarbeiten. | Laststabilität, Locust-Tests für API                  |
+|                              | Änderungsszenario: Neue Lastbedingungen erfordern Anpassungen und erneute Tests der Laststabilität. | Manuelle Verifikation                                 |
+| Portability - Übertragbarkeit| Nutzungsszenario: Das System läuft in unterschiedlichen Umgebungen ohne Anpassungen.             | Dockerisierung, Gradle build auf Windows / Mac / Linux|
+|                              | Änderungsszenario: Eine neue Laufzeitumgebung wird unterstützt und getestet.                    | Unabhängige Laufzeitumgebung                          |
+|                              | Nutzungsszenario: Das System ist in den meisten bekannten Browsern nutzbar.                     | Playwright End-to-End Testing                         |
+|                              | Änderungsszenario: Neue Browser-Versionen werden unterstützt und getestet.                      | Nutzbarkeit auf den meisten bekannten Browsern        |
+| Usability - Benutzerfreundlichkeit| Nutzungsszenario: Die Benutzer verstehen den Spielablauf durch klare Erklärungen.             | About-Seite erklärt Spielablauf                       |
+|                              | Änderungsszenario: Verbesserungen der Verständlichkeit werden kontinuierlich umgesetzt.         | Verständlichkeit                                      |
+|                              | Nutzungsszenario: Das System ist barrierefrei und für alle Benutzer zugänglich.                 | Prüfung der Anwendung mit Lighthouse und Umsetzung der Vorschläge |
+|                              | Änderungsszenario: Neue Barrierefreiheitsstandards werden berücksichtigt und umgesetzt.          | Barrierefreiheit                                      |
+
+
 
 <div class="formalpara-title">
 
