@@ -813,36 +813,16 @@ Entweder tabellarisch oder als Freitext.
 
 # Risiken und technische Schulden
 
-<div class="formalpara-title">
-
-**Inhalt**
-
-</div>
-
-Eine nach Prioritäten geordnete Liste der erkannten Architekturrisiken
-und/oder technischen Schulden.
-
-> Risikomanagement ist Projektmanagement für Erwachsene.
->
-> —  Tim Lister Atlantic Systems Guild
-
-Unter diesem Motto sollten Sie Architekturrisiken und/oder technische
-Schulden gezielt ermitteln, bewerten und Ihren Management-Stakeholdern
-(z.B. Projektleitung, Product-Owner) transparent machen.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Liste oder Tabelle von Risiken und/oder technischen Schulden, eventuell
-mit vorgeschlagenen Maßnahmen zur Risikovermeidung, Risikominimierung
-oder dem Abbau der technischen Schulden.
-
-Siehe [Risiken und technische
-Schulden](https://docs.arc42.org/section-11/) in der
-online-Dokumentation (auf Englisch!).
+| Risiko/Technische Schuld                    | Beschreibung                                                                                       | Maßnahme zur Risikovermeidung/Risikominimierung/Abbau der technischen Schuld                          | Priorität     |
+|---------------------------------------------|---------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|---------------|
+| Mangelnde Skalierbarkeit                    | Flask ist leichtgewichtig, könnte aber bei hohen Lasten an seine Grenzen stoßen.                  | Frühzeitiges Testen der Anwendung unter Lastbedingungen. Wechsel auf andere Back-End-Technologie für Produktionseinsatz | Hoch          |
+| Sicherheitslücken                            | Vaadin-Frontends könnten anfällig für Sicherheitsprobleme sein.                                  | Implementierung von Sicherheitsmechanismen wie Validierung und Sanitierung von Eingaben, regelmäßige Sicherheitsüberprüfungen. | Hoch          |
+| Fehlende Testabdeckung                      | Unzureichende Tests besonders beim Play-Testing                                     | Aufbau einer umfassenden Teststrategie mit Unit-, Integrations- und End-to-End-Tests. Feedback von Nutzern einholen                  | Hoch          |
+| Komplexität der API-Kommunikation           | REST API-Kommunikation zwischen Frontend und Backend kann komplex und fehleranfällig sein.        | Einsatz von API-Gateways und umfassende API-Dokumentation sowie Testen der API-Endpunkte.               | Mittel        |
+| Datenkonsistenz                             | Verwendung von JSON-Dateien statt einer Datenbank kann zu Inkonsistenzen führen.                  | Zukünftig Einführung robuste Datenbanklösung.                                                           | Mittel        |
+| Performance-Probleme                        | JSON-Dateien und Vaadin können bei wachsendem Datenvolumen Performance-Probleme verursachen.      | Performance-Optimierungen durch Caching, Indexierung und effiziente Datenverarbeitungsmethoden.         | Mittel        |
+| Docker-Komplexität                          | Beide Docker-Container (Backend / Frontend) müssen zur selben Zeit laufen.                        | Automatisierung des Docker-Setups und umfassende Dokumentation der Container-Konfiguration.             | Mittel       |
+| Wartungsaufwand                             | Hoher Wartungsaufwand durch Nutzung einer JSON Datei anstelle einer Datenbank                     | Zukünftig Verwendung einer bewährten Datenbanklösung.                                                   | Niedrig        |
 
 # Setup
 
