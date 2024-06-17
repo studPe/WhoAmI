@@ -19,8 +19,10 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Start Application
-      run: npm start &
+      run: ./gradlew bootRun &
 
+    - name: Add Delay to Ensure Application Starts
+      run: sleep 15
     - name: Wait for Application to be Ready
       run: npx wait-on http://localhost:8080
 

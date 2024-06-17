@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "**SQS SoSe 2024**",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {    
+    "start": "./gradlew bootRun",
+    "test": "playwright test",
+    "pretest": "npx wait-on http://localhost:8080"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
