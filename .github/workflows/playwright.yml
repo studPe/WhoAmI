@@ -19,7 +19,7 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Start Application
-      run: ./gradlew bootRun &
+      run: cd whoami && ./gradlew bootRun &
 
     - name: Add Delay to Ensure Application Starts
       run: sleep 15
