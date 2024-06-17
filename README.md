@@ -54,43 +54,6 @@ Die hier beschriebene Anwendung wurde für die Veranstaltung SQS im Sommersemest
 | System -> Entwickler        | Ausgabeport                                      | Ouput der Anwendungen  an Port          |
 
 
-<div class="formalpara-title">
-
-**Inhalt**
-
-</div>
-
-Festlegung **aller** Kommunikationsbeziehungen (Nutzer, IT-Systeme, …)
-mit Erklärung der fachlichen Ein- und Ausgabedaten oder Schnittstellen.
-Zusätzlich (bei Bedarf) fachliche Datenformate oder Protokolle der
-Kommunikation mit den Nachbarsystemen.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Alle Beteiligten müssen verstehen, welche fachlichen Informationen mit
-der Umwelt ausgetauscht werden.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Alle Diagrammarten, die das System als Blackbox darstellen und die
-fachlichen Schnittstellen zu den Nachbarsystemen beschreiben.
-
-Alternativ oder ergänzend können Sie eine Tabelle verwenden. Der Titel
-gibt den Namen Ihres Systems wieder; die drei Spalten sind:
-Kommunikationsbeziehung, Eingabe, Ausgabe.
-
-**\<Diagramm und/oder Tabelle>**
-
-**\<optional: Erläuterung der externen fachlichen Schnittstellen>**
-
 ## Technischer Kontext
 Ursprünglich geplanter Umfang:
 
@@ -103,53 +66,14 @@ Technische Umsetzung:
 
 # Lösungsstrategie
 
-<div class="formalpara-title">
 
-**Inhalt**
+-   Nutzung für den Entwickler bekannter Ideen, um gewonnenes Wissen später in laufenden Projekten umzusetzen.
 
-</div>
+-   Zerlegung des Systems in 2 seperate Docker-Container, um Portabilität zu erhöhen und Prüfung gesamter Container zu ermöglichen
 
-Kurzer Überblick über die grundlegenden Entscheidungen und
-Lösungsansätze, die Entwurf und Implementierung des Systems prägen.
-Hierzu gehören:
+-   Nutzung einer JSON-Datei anstelle einer DB, um Entwicklungsaufwand Testing / Usability zu fokussieren.
 
--   Technologieentscheidungen
-
--   Entscheidungen über die Top-Level-Zerlegung des Systems,
-    beispielsweise die Verwendung gesamthaft prägender Entwurfs- oder
-    Architekturmuster,
-
--   Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen
-    sowie
-
--   relevante organisatorische Entscheidungen, beispielsweise für
-    bestimmte Entwicklungsprozesse oder Delegation bestimmter Aufgaben
-    an andere Stakeholder.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Diese wichtigen Entscheidungen bilden wesentliche „Eckpfeiler“ der
-Architektur. Von ihnen hängen viele weitere Entscheidungen oder
-Implementierungsregeln ab.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Fassen Sie die zentralen Entwurfsentscheidungen **kurz** zusammen.
-Motivieren Sie, ausgehend von Aufgabenstellung, Qualitätszielen und
-Randbedingungen, was Sie entschieden haben und warum Sie so entschieden
-haben. Vermeiden Sie redundante Beschreibungen und verweisen Sie eher
-auf weitere Ausführungen in Folgeabschnitten.
-
-Siehe [Lösungsstrategie](https://docs.arc42.org/section-4/) in der
-online-Dokumentation (auf Englisch!).
+-   Seperate Teststrategien für Front- & Backend
 
 # Bausteinsicht
 
