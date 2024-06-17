@@ -96,44 +96,10 @@ Ursprünglich geplanter Umfang:
 
 ![signal-2024-06-09-222603](https://github.com/studPe/WhoAmI/assets/158460492/2b3fa6d3-ca6f-4326-8e85-27a23129a42e)
 
+Technische Umsetzung:
 
-<div class="formalpara-title">
+![Technical Context Diagram drawio](https://github.com/studPe/WhoAmI/assets/158460492/034500f0-8f61-412e-96b6-5d2efff51ebd)
 
-**Inhalt**
-
-</div>
-
-Technische Schnittstellen (Kanäle, Übertragungsmedien) zwischen dem
-System und seiner Umwelt. Zusätzlich eine Erklärung (*mapping*), welche
-fachlichen Ein- und Ausgaben über welche technischen Kanäle fließen.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Viele Stakeholder treffen Architekturentscheidungen auf Basis der
-technischen Schnittstellen des Systems zu seinem Kontext.
-
-Insbesondere bei der Entwicklung von Infrastruktur oder Hardware sind
-diese technischen Schnittstellen durchaus entscheidend.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Beispielsweise UML Deployment-Diagramme mit den Kanälen zu
-Nachbarsystemen, begleitet von einer Tabelle, die Kanäle auf
-Ein-/Ausgaben abbildet.
-
-**\<Diagramm oder Tabelle>**
-
-**\<optional: Erläuterung der externen technischen Schnittstellen>**
-
-**\<Mapping fachliche auf technische Schnittstellen>**
 
 # Lösungsstrategie
 
