@@ -26,7 +26,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         context: .
-        file: Dockerfile.1
+        file: Dockerfile.vaadin
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/docker.vaadin:latest
 
@@ -34,7 +34,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         context: .
-        file: Dockerfile.2
+        file: Dockerfile.flask
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/docker.flask:latest
 
