@@ -30,7 +30,7 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Start Application
-      run: cd whoami && ./gradlew bootRun 
+      run: cd whoami && ./gradlew bootRun &
 
     - name: Wait for Application to be Ready
       run: |
