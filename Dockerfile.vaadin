@@ -1,7 +1,7 @@
 FROM openjdk:17
 WORKDIR /app
 COPY whoami /app
-RUN ./gradle build
+RUN cd whoami && ./gradlew clean build '-Pvaadin.productionMode' --stacktrace --info --no-daemon
 EXPOSE 8090
 CMD java -jar -Dspring.profiles.active=prod app.jar
 
