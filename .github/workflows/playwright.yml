@@ -22,9 +22,7 @@ jobs:
       run: cd whoami && ./gradlew bootRun &
 
     - name: Add Delay to Ensure Application Starts
-      run: sleep 15
-    - name: Wait for Application to be Ready
-      run: npx wait-on http://localhost:8080
+      run: sleep 30
 
     - name: Run Playwright tests
       run: npx playwright test
