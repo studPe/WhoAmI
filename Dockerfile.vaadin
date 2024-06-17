@@ -1,9 +1,15 @@
 FROM openjdk:17
-WORKDIR /app
-COPY whoami /app
-RUN cd whoami && ./gradlew clean build '-Pvaadin.productionMode' --stacktrace --info --no-daemon
-EXPOSE 8090
-CMD java -jar -Dspring.profiles.active=prod app.jar
+COPY whoami/target/whoami.main.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+
+
+# FROM openjdk:17
+# WORKDIR /app
+# COPY whoami /app
+# RUN cd whoami && ./gradlew clean build '-Pvaadin.productionMode' --stacktrace --info --no-daemon
+# EXPOSE 8080
+# CMD java -jar -Dspring.profiles.active=prod app.jar
 
 
 
