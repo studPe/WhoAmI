@@ -1,0 +1,42 @@
+name: Build and Push Docker Images
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push docker.1 image
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        file: Dockerfile.1
+        push: true
+        tags: ${{ secrets.DOCKER_USERNAME }}/docker.vaadin:latest
+
+    - name: Build and push docker.2 image
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        file: Dockerfile.2
+        push: true
+        tags: ${{ secrets.DOCKER_USERNAME }}/docker.flask:latest
+
+    - name: Logout from Docker Hub
+      run: docker logout
