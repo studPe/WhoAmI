@@ -18,6 +18,8 @@ jobs:
       run: npm install
     - name: Install Gradle
       uses: gradle/gradle-build-action@v2
+      with:
+        gradle-version: '7.3'
 
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
