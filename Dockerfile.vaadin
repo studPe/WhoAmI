@@ -1,17 +1,26 @@
-# Dockerfile for Vaadin Frontend
-FROM openjdk:11-jdk-slim
-
-# Set the working directory
+FROM openjdk:17
 WORKDIR /app
-
-# Copy the Gradle project
 COPY whoami /app
+RUN gradle build
+EXPOSE 8090
+CMD java -jar -Dspring.profiles.active=prod app.jar
 
-# Build the project
-RUN ./gradlew build
 
-# Expose the port
-EXPOSE 8080
 
-# Start the Vaadin application
-CMD ["./gradlew", "bootRun"]
+# # Dockerfile for Vaadin Frontend
+# FROM openjdk:11-jdk-slim
+
+# # Set the working directory
+# WORKDIR /app
+
+# # Copy the Gradle project
+# COPY whoami /app
+
+# # Build the project
+# RUN ./gradlew build
+
+# # Expose the port
+# EXPOSE 8080
+
+# # Start the Vaadin application
+# CMD ["./gradlew", "bootRun"]
