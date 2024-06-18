@@ -22,14 +22,6 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and push docker.vaadin image
-      uses: docker/build-push-action@v3
-      with:
-        context: .
-        file: Dockerfile.vaadin
-        push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/docker.vaadin:latest
-
     - name: Build and push docker.flask image
       uses: docker/build-push-action@v3
       with:
