@@ -51,7 +51,7 @@ jobs:
 
       - name: Run Locust load tests
         run: |
-          locust -f locustfile.py --headless -u 10 -r 1 --run-time 1m --host=http://localhost
+          locust -f locust.py --headless -u 10 -r 1 --run-time 1m --host=http://localhost
 
       - name: Stop Docker Container
         run: docker stop test-container
