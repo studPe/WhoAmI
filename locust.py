@@ -1,3 +1,4 @@
+import random
 from locust import HttpUser, TaskSet, task, between
 
 class UserBehavior(TaskSet):
@@ -7,7 +8,8 @@ class UserBehavior(TaskSet):
 
     @task
     def about(self):
-        self.client.get("/about")
+        random_int = random.randint(1, 100)  # Generate a random integer between 1 and 100
+        self.client.get(f"/random-name/{random_int}")
 
 class WebsiteUser(HttpUser):
     tasks = [UserBehavior]
