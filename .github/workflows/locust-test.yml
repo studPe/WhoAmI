@@ -17,7 +17,7 @@ jobs:
         image: docker:19.03.12
         options: --privileged
         ports:
-          - 5000:5000
+          - 80:80
         env:
           DOCKER_TLS_CERTDIR: ""
 
@@ -39,7 +39,7 @@ jobs:
 
       - name: Run Docker Container
         run: |
-          docker run -d -p 80:80 --name test-container stupe562/docker.flask:latest
+          docker run -d -p 5000:5000 --name test-container stupe562/docker.flask:latest
 
       - name: Wait for the container to be ready
         run: sleep 15
@@ -51,7 +51,7 @@ jobs:
 
       - name: Run Locust load tests
         run: |
-          locust -f locust.py --headless -u 10 -r 1 --run-time 1m --host=http://localhost
+          locust -f locust.py --headless -u 10 -r 1 --run-time 1m --host=http://127.0.0.1:5000
 
       - name: Stop Docker Container
         run: docker stop test-container

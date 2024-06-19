@@ -3,7 +3,7 @@ from locust import HttpUser, TaskSet, task, between
 class UserBehavior(TaskSet):
     @task
     def index(self):
-        self.client.get("/")
+        self.client.get("/random-name")
 
     @task
     def about(self):
