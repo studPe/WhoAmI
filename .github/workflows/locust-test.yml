@@ -27,6 +27,9 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
+      
+      - name: Wait for the container to be pushed
+        run: sleep 15
 
       - name: Log in to DockerHub
         uses: docker/login-action@v1
@@ -51,7 +54,7 @@ jobs:
 
       - name: Run Locust load tests
         run: |
-          locust -f locust.py --headless -u 10 -r 1 --run-time 1m --host=http://127.0.0.1:5000
+          locust -f locust.py --headless -u 4 -r 2 --run-time 4m --host=http://127.0.0.1:5000
 
       - name: Stop Docker Container
         run: docker stop test-container
