@@ -130,6 +130,9 @@ online-Dokumentation (auf Englisch!).
 
 ## Whitebox Gesamtsystem
 
+![WhiteBox drawio (1)](https://github.com/studPe/WhoAmI/assets/158460492/538d920f-f195-40bd-ab1a-fb309f43254d)
+
+
 An dieser Stelle beschreiben Sie die Zerlegung des Gesamtsystems anhand
 des nachfolgenden Whitebox-Templates. Dieses enthält:
 
