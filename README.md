@@ -40,6 +40,16 @@ Ziel der Anwendung ist die Entwicklung einer Anwendung, die abgesichert ist Anha
 
 Die hier beschriebene Anwendung wurde für die Veranstaltung SQS im Sommersemester 2024 entwickelt.
 
+## Usability-Test:
+### Usability-Test und abgeleitete Maßnahmen
+
+| Test     | Ergebnis/Beobachtung                              | Abgeleitete Maßnahme                  | Frist     |
+|-------------------|---------------------------------------------------|--------------------------------------|-----------|
+| M 40 Jahre  | Nutzer finden den Button "Schließen" verwirrend              | Button wird verändert       | 22.06.2024|
+| Suchfunktion      | Suchergebnisse sind ungenau                       | Suchalgorithmus verbessern          | 22.06.2024|
+| Ladezeit          | Seite lädt langsam                                | Serverleistung erhöhen              | 22.06.2024|
+
+
 # Kontextabgrenzung
 ![Kontextdiagramm drawio](https://github.com/studPe/WhoAmI/assets/158460492/60d0b703-79f0-47fb-ab76-21197eea6900)
 
