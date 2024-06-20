@@ -215,6 +215,9 @@ Diese Zerlegung des Gesamtsystems ermöglicht eine klare Trennung der Frontend- 
 
 # Laufzeitsicht
 
+![Sequenz Diagramm drawio (1)](https://github.com/studPe/WhoAmI/assets/158460492/2c8bbfe3-8ae9-4213-a39a-f35d929678d6)
+
+
 <div class="formalpara-title">
 
 **Inhalt**
