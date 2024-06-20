@@ -132,159 +132,76 @@ online-Dokumentation (auf Englisch!).
 
 ![WhiteBox drawio (1)](https://github.com/studPe/WhoAmI/assets/158460492/538d920f-f195-40bd-ab1a-fb309f43254d)
 
+### Begründung
 
-An dieser Stelle beschreiben Sie die Zerlegung des Gesamtsystems anhand
-des nachfolgenden Whitebox-Templates. Dieses enthält:
+Diese Zerlegung des Gesamtsystems ermöglicht eine klare Trennung der Frontend- und Backend-Komponenten sowie eine klare Schnittstellendefinition zwischen den einzelnen Bausteinen. Dies erleichtert die Wartung und Weiterentwicklung des Systems und ermöglicht eine bessere Skalierbarkeit und Fehlertoleranz.
 
--   Ein Übersichtsdiagramm
+### Enthaltene Bausteine
 
--   die Begründung dieser Zerlegung
+#### Tabelle der enthaltenen Bausteine
 
--   Blackbox-Beschreibungen der hier enthaltenen Bausteine. Dafür haben
-    Sie verschiedene Optionen:
+| **Name**              | **Verantwortung**                                          |
+|-----------------------|------------------------------------------------------------|
+| WhoAmI-Frontend       | Bereitstellung der Benutzeroberfläche                      |
+| WAI-API               | Bereitstellung der API-Funktionalitäten                    |
+| Docker-Container      | Umgebung für die Ausführung der Frontend- und Backend-Komponenten |
+| UI                    | Benutzeroberfläche des WhoAmI-Frontends                    |
+| Vaadin-UI             | Webinterface-Komponente im Frontend                        |
+| Webinterface          | Schnittstelle für die Benutzerinteraktion                  |
+| Gunicorn              | WSGI-Server für die WAI-API                                |
+| Flask-API             | API-Funktionalität der WAI-API                             |
+| JSON-File             | Datenquelle für die WAI-API                                |
 
-    -   in *einer* Tabelle, gibt einen kurzen und pragmatischen
-        Überblick über die enthaltenen Bausteine sowie deren
-        Schnittstellen.
+### Wichtige Schnittstellen
 
-    -   als Liste von Blackbox-Beschreibungen der Bausteine, gemäß dem
-        Blackbox-Template (siehe unten). Diese Liste können Sie, je nach
-        Werkzeug, etwa in Form von Unterkapiteln (Text), Unter-Seiten
-        (Wiki) oder geschachtelten Elementen (Modellierungswerkzeug)
-        darstellen.
+- **HTTP**: Verbindet den Browser des Nutzers mit dem WhoAmI-Frontend.
+- **REST**: Verbindung zwischen dem WhoAmI-Frontend und der WAI-API.
+- **WSGI**: Verbindung zwischen Gunicorn und der Flask-API.
 
--   (optional:) wichtige Schnittstellen, die nicht bereits im
-    Blackbox-Template eines der Bausteine erläutert werden, aber für das
-    Verständnis der Whitebox von zentraler Bedeutung sind. Aufgrund der
-    vielfältigen Möglichkeiten oder Ausprägungen von Schnittstellen
-    geben wir hierzu kein weiteres Template vor. Im schlimmsten Fall
-    müssen Sie Syntax, Semantik, Protokolle, Fehlerverhalten,
-    Restriktionen, Versionen, Qualitätseigenschaften, notwendige
-    Kompatibilitäten und vieles mehr spezifizieren oder beschreiben. Im
-    besten Fall kommen Sie mit Beispielen oder einfachen Signaturen
-    zurecht.
+### Blackbox-Beschreibungen der Ebene 1
 
-***\<Übersichtsdiagramm>***
+#### WhoAmI-Frontend
 
-Begründung  
-*\<Erläuternder Text>*
+- **Zweck/Verantwortung**: Bereitstellung der Benutzeroberfläche für den Zugriff auf die WhoAmI-Dienste.
+- **Schnittstellen**: HTTP-Schnittstelle für die Kommunikation mit dem Browser.
+- **Qualitäts-/Leistungsmerkmale**: Hohe Verfügbarkeit, schnelle Reaktionszeiten.
+- **Ablageort/Datei(en)**: Docker-Container.
 
-Enthaltene Bausteine  
-*\<Beschreibung der enthaltenen Bausteine (Blackboxen)>*
+#### WAI-API
 
-Wichtige Schnittstellen  
-*\<Beschreibung wichtiger Schnittstellen>*
+- **Zweck/Verantwortung**: Bereitstellung der API-Funktionalitäten.
+- **Schnittstellen**: REST-Schnittstelle zur Kommunikation mit dem Frontend, WSGI für die interne Kommunikation.
+- **Qualitäts-/Leistungsmerkmale**: Skalierbarkeit, Sicherheit.
+- **Ablageort/Datei(en)**: Docker-Container.
 
-Hier folgen jetzt Erläuterungen zu Blackboxen der Ebene 1.
+### Ebene 2
 
-Falls Sie die tabellarische Beschreibung wählen, so werden Blackboxen
-darin nur mit Name und Verantwortung nach folgendem Muster beschrieben:
+#### Whitebox WhoAmI-Frontend
 
-| **Name**        | **Verantwortung** |
-|-----------------|-------------------|
-| *\<Blackbox 1>* |  *\<Text>*        |
-| *\<Blackbox 2>* |  *\<Text>*        |
+- **Innere Bausteine**: UI, Vaadin-UI, Webinterface.
+- **Beschreibung**: Die UI-Komponente stellt die Hauptbenutzeroberfläche bereit, die Vaadin-UI ist für das Webinterface verantwortlich, und das Webinterface dient als Schnittstelle für die Benutzerinteraktion.
 
-Falls Sie die ausführliche Liste von Blackbox-Beschreibungen wählen,
-beschreiben Sie jede wichtige Blackbox in einem eigenen
-Blackbox-Template. Dessen Überschrift ist jeweils der Namen dieser
-Blackbox.
+#### Whitebox WAI-API
 
-### \<Name Blackbox 1>
+- **Innere Bausteine**: Gunicorn, Flask-API, JSON-File.
+- **Beschreibung**: Gunicorn fungiert als WSGI-Server, der die Flask-API bedient, welche die Hauptlogik der API enthält. Die JSON-File dient als Datenquelle für die API.
 
-Beschreiben Sie die \<Blackbox 1> anhand des folgenden
-Blackbox-Templates:
+### Ebene 3
 
--   Zweck/Verantwortung
+#### Whitebox Gunicorn
 
--   Schnittstelle(n), sofern diese nicht als eigenständige
-    Beschreibungen herausgezogen sind. Hierzu gehören eventuell auch
-    Qualitäts- und Leistungsmerkmale dieser Schnittstelle.
+- **Innere Bausteine**: WSGI-Server, Worker-Prozesse.
+- **Beschreibung**: Gunicorn nutzt Worker-Prozesse zur Bearbeitung eingehender Anfragen und zur Weiterleitung an die Flask-API.
 
--   (Optional) Qualitäts-/Leistungsmerkmale der Blackbox, beispielsweise
-    Verfügbarkeit, Laufzeitverhalten o. Ä.
+#### Whitebox Flask-API
 
--   (Optional) Ablageort/Datei(en)
+- **Innere Bausteine**: Routen, Controller, Services.
+- **Beschreibung**: Die Flask-API enthält verschiedene Routen, die zu entsprechenden Controllern führen, welche wiederum die Logik über Services bereitstellen.
 
--   (Optional) Erfüllte Anforderungen, falls Sie Traceability zu
-    Anforderungen benötigen.
+#### Whitebox JSON-File
 
--   (Optional) Offene Punkte/Probleme/Risiken
-
-*\<Zweck/Verantwortung>*
-
-*\<Schnittstelle(n)>*
-
-*\<(Optional) Qualitäts-/Leistungsmerkmale>*
-
-*\<(Optional) Ablageort/Datei(en)>*
-
-*\<(Optional) Erfüllte Anforderungen>*
-
-*\<(optional) Offene Punkte/Probleme/Risiken>*
-
-### \<Name Blackbox 2>
-
-*\<Blackbox-Template>*
-
-### \<Name Blackbox n>
-
-*\<Blackbox-Template>*
-
-### \<Name Schnittstelle 1>
-
-…
-
-### \<Name Schnittstelle m>
-
-## Ebene 2
-
-Beschreiben Sie den inneren Aufbau (einiger) Bausteine aus Ebene 1 als
-Whitebox.
-
-Welche Bausteine Ihres Systems Sie hier beschreiben, müssen Sie selbst
-entscheiden. Bitte stellen Sie dabei Relevanz vor Vollständigkeit.
-Skizzieren Sie wichtige, überraschende, riskante, komplexe oder
-besonders volatile Bausteine. Normale, einfache oder standardisierte
-Teile sollten Sie weglassen.
-
-### Whitebox *\<Baustein 1>*
-
-…zeigt das Innenleben von *Baustein 1*.
-
-*\<Whitebox-Template>*
-
-### Whitebox *\<Baustein 2>*
-
-*\<Whitebox-Template>*
-
-…
-
-### Whitebox *\<Baustein m>*
-
-*\<Whitebox-Template>*
-
-## Ebene 3
-
-Beschreiben Sie den inneren Aufbau (einiger) Bausteine aus Ebene 2 als
-Whitebox.
-
-Bei tieferen Gliederungen der Architektur kopieren Sie diesen Teil von
-arc42 für die weiteren Ebenen.
-
-### Whitebox \<\_Baustein x.1\_\>
-
-…zeigt das Innenleben von *Baustein x.1*.
-
-*\<Whitebox-Template>*
-
-### Whitebox \<\_Baustein x.2\_\>
-
-*\<Whitebox-Template>*
-
-### Whitebox \<\_Baustein y.1\_\>
-
-*\<Whitebox-Template>*
+- **Innere Bausteine**: Dateistruktur, Parser.
+- **Beschreibung**: Die JSON-File enthält die Daten in einer strukturierten Form, die über einen Parser in der Flask-API verarbeitet werden.
 
 # Laufzeitsicht
 
