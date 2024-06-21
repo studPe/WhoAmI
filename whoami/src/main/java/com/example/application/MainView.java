@@ -55,6 +55,7 @@ public class MainView extends AppLayout implements BeforeEnterObserver {
         // Navigate to GameView by default if no other route is provided
         if (event.getNavigationTarget() == null || event.getNavigationTarget().equals(MainView.class)) {
             event.rerouteTo(GameView.class);
+
             //openWelcomeDialog();
             //UI.getCurrent().getPage().reload();
         }
@@ -126,18 +127,19 @@ public class MainView extends AppLayout implements BeforeEnterObserver {
         header.add(layout, nav);
         return header;
     }
-    public void openWelcomeDialog() {
+    public static void openWelcomeDialog() {
         Dialog welcomeDialog = new Dialog();
         NumberField gameIdField = new NumberField();
         ComboBox<String> comboBox = new ComboBox<>("Select a name");
         comboBox.setItems("Alice", "Bob", "Charlie", "Dana");
         welcomeDialog.add(new VerticalLayout(new H1("Welcome!"), new Span("Thanks for visiting our WhoAmI, please enter your Game-ID."),gameIdField,comboBox));
-        Button closeButton = new Button("Close", event -> {
+        Button closeButton = new Button("Start Game!", event -> {
             double gameId = gameIdField.getValue();
             UI.getCurrent().getPage().executeJs("localStorage.setItem($0, $1);", "gameid", gameId);
             String vipName = comboBox.getValue();
             UI.getCurrent().getPage().executeJs("localStorage.setItem($0, $1);", "vipName", vipName);
             welcomeDialog.close();
+            UI.getCurrent().getPage().reload();
         });
         welcomeDialog.add(closeButton);
         welcomeDialog.open();

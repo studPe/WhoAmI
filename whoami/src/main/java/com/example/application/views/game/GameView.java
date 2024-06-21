@@ -127,6 +127,7 @@ public class GameView extends HorizontalLayout{
             } else {
                 Notification.show("Please enter GameID");
                 System.err.println("No gameid found in localStorage.");
+                MainView.openWelcomeDialog();
             }
         });
     }
