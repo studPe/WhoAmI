@@ -40,6 +40,16 @@ Ziel der Anwendung ist die Entwicklung einer Anwendung, die abgesichert ist Anha
 
 Die hier beschriebene Anwendung wurde für die Veranstaltung SQS im Sommersemester 2024 entwickelt.
 
+## Usability-Test:
+### Usability-Test und abgeleitete Maßnahmen
+
+| Test     | Ergebnis/Beobachtung                              | Abgeleitete Maßnahme                  | Frist     |
+|-------------------|---------------------------------------------------|--------------------------------------|-----------|
+| M 40 Jahre  | Nutzer finden den Button "Schließen" verwirrend              | Button wird verändert       | 22.06.2024|
+| Suchfunktion      | Suchergebnisse sind ungenau                       | Suchalgorithmus verbessern          | 22.06.2024|
+| Ladezeit          | Seite lädt langsam                                | Serverleistung erhöhen              | 22.06.2024|
+
+
 # Kontextabgrenzung
 ![Kontextdiagramm drawio](https://github.com/studPe/WhoAmI/assets/158460492/60d0b703-79f0-47fb-ab76-21197eea6900)
 
@@ -130,160 +140,83 @@ online-Dokumentation (auf Englisch!).
 
 ## Whitebox Gesamtsystem
 
-An dieser Stelle beschreiben Sie die Zerlegung des Gesamtsystems anhand
-des nachfolgenden Whitebox-Templates. Dieses enthält:
+![WhiteBox drawio (1)](https://github.com/studPe/WhoAmI/assets/158460492/538d920f-f195-40bd-ab1a-fb309f43254d)
 
--   Ein Übersichtsdiagramm
+### Begründung
 
--   die Begründung dieser Zerlegung
+Diese Zerlegung des Gesamtsystems ermöglicht eine klare Trennung der Frontend- und Backend-Komponenten sowie eine klare Schnittstellendefinition zwischen den einzelnen Bausteinen. Dies erleichtert die Wartung und Weiterentwicklung des Systems und ermöglicht eine bessere Skalierbarkeit und Fehlertoleranz.
 
--   Blackbox-Beschreibungen der hier enthaltenen Bausteine. Dafür haben
-    Sie verschiedene Optionen:
+### Enthaltene Bausteine
 
-    -   in *einer* Tabelle, gibt einen kurzen und pragmatischen
-        Überblick über die enthaltenen Bausteine sowie deren
-        Schnittstellen.
+#### Tabelle der enthaltenen Bausteine
 
-    -   als Liste von Blackbox-Beschreibungen der Bausteine, gemäß dem
-        Blackbox-Template (siehe unten). Diese Liste können Sie, je nach
-        Werkzeug, etwa in Form von Unterkapiteln (Text), Unter-Seiten
-        (Wiki) oder geschachtelten Elementen (Modellierungswerkzeug)
-        darstellen.
+| **Name**              | **Verantwortung**                                          |
+|-----------------------|------------------------------------------------------------|
+| WhoAmI-Frontend       | Bereitstellung der Benutzeroberfläche                      |
+| WAI-API               | Bereitstellung der API-Funktionalitäten                    |
+| Docker-Container      | Umgebung für die Ausführung der Frontend- und Backend-Komponenten |
+| UI                    | Benutzeroberfläche des WhoAmI-Frontends                    |
+| Vaadin-UI             | Webinterface-Komponente im Frontend                        |
+| Webinterface          | Schnittstelle für die Benutzerinteraktion                  |
+| Gunicorn              | WSGI-Server für die WAI-API                                |
+| Flask-API             | API-Funktionalität der WAI-API                             |
+| JSON-File             | Datenquelle für die WAI-API                                |
 
--   (optional:) wichtige Schnittstellen, die nicht bereits im
-    Blackbox-Template eines der Bausteine erläutert werden, aber für das
-    Verständnis der Whitebox von zentraler Bedeutung sind. Aufgrund der
-    vielfältigen Möglichkeiten oder Ausprägungen von Schnittstellen
-    geben wir hierzu kein weiteres Template vor. Im schlimmsten Fall
-    müssen Sie Syntax, Semantik, Protokolle, Fehlerverhalten,
-    Restriktionen, Versionen, Qualitätseigenschaften, notwendige
-    Kompatibilitäten und vieles mehr spezifizieren oder beschreiben. Im
-    besten Fall kommen Sie mit Beispielen oder einfachen Signaturen
-    zurecht.
+### Wichtige Schnittstellen
 
-***\<Übersichtsdiagramm>***
+- **HTTP**: Verbindet den Browser des Nutzers mit dem WhoAmI-Frontend.
+- **REST**: Verbindung zwischen dem WhoAmI-Frontend und der WAI-API.
+- **WSGI**: Verbindung zwischen Gunicorn und der Flask-API.
 
-Begründung  
-*\<Erläuternder Text>*
+### Blackbox-Beschreibungen der Ebene 1
 
-Enthaltene Bausteine  
-*\<Beschreibung der enthaltenen Bausteine (Blackboxen)>*
+#### WhoAmI-Frontend
 
-Wichtige Schnittstellen  
-*\<Beschreibung wichtiger Schnittstellen>*
+- **Zweck/Verantwortung**: Bereitstellung der Benutzeroberfläche für den Zugriff auf die WhoAmI-Dienste.
+- **Schnittstellen**: HTTP-Schnittstelle für die Kommunikation mit dem Browser.
+- **Qualitäts-/Leistungsmerkmale**: Hohe Verfügbarkeit, schnelle Reaktionszeiten.
+- **Ablageort/Datei(en)**: Docker-Container.
 
-Hier folgen jetzt Erläuterungen zu Blackboxen der Ebene 1.
+#### WAI-API
 
-Falls Sie die tabellarische Beschreibung wählen, so werden Blackboxen
-darin nur mit Name und Verantwortung nach folgendem Muster beschrieben:
+- **Zweck/Verantwortung**: Bereitstellung der API-Funktionalitäten.
+- **Schnittstellen**: REST-Schnittstelle zur Kommunikation mit dem Frontend, WSGI für die interne Kommunikation.
+- **Qualitäts-/Leistungsmerkmale**: Skalierbarkeit, Sicherheit.
+- **Ablageort/Datei(en)**: Docker-Container.
 
-| **Name**        | **Verantwortung** |
-|-----------------|-------------------|
-| *\<Blackbox 1>* |  *\<Text>*        |
-| *\<Blackbox 2>* |  *\<Text>*        |
+### Ebene 2
 
-Falls Sie die ausführliche Liste von Blackbox-Beschreibungen wählen,
-beschreiben Sie jede wichtige Blackbox in einem eigenen
-Blackbox-Template. Dessen Überschrift ist jeweils der Namen dieser
-Blackbox.
+#### Whitebox WhoAmI-Frontend
 
-### \<Name Blackbox 1>
+- **Innere Bausteine**: UI, Vaadin-UI, Webinterface.
+- **Beschreibung**: Die UI-Komponente stellt die Hauptbenutzeroberfläche bereit, die Vaadin-UI ist für das Webinterface verantwortlich, und das Webinterface dient als Schnittstelle für die Benutzerinteraktion.
 
-Beschreiben Sie die \<Blackbox 1> anhand des folgenden
-Blackbox-Templates:
+#### Whitebox WAI-API
 
--   Zweck/Verantwortung
+- **Innere Bausteine**: Gunicorn, Flask-API, JSON-File.
+- **Beschreibung**: Gunicorn fungiert als WSGI-Server, der die Flask-API bedient, welche die Hauptlogik der API enthält. Die JSON-File dient als Datenquelle für die API.
 
--   Schnittstelle(n), sofern diese nicht als eigenständige
-    Beschreibungen herausgezogen sind. Hierzu gehören eventuell auch
-    Qualitäts- und Leistungsmerkmale dieser Schnittstelle.
+### Ebene 3
 
--   (Optional) Qualitäts-/Leistungsmerkmale der Blackbox, beispielsweise
-    Verfügbarkeit, Laufzeitverhalten o. Ä.
+#### Whitebox Gunicorn
 
--   (Optional) Ablageort/Datei(en)
+- **Innere Bausteine**: WSGI-Server, Worker-Prozesse.
+- **Beschreibung**: Gunicorn nutzt Worker-Prozesse zur Bearbeitung eingehender Anfragen und zur Weiterleitung an die Flask-API.
 
--   (Optional) Erfüllte Anforderungen, falls Sie Traceability zu
-    Anforderungen benötigen.
+#### Whitebox Flask-API
 
--   (Optional) Offene Punkte/Probleme/Risiken
+- **Innere Bausteine**: Routen, Controller, Services.
+- **Beschreibung**: Die Flask-API enthält verschiedene Routen, die zu entsprechenden Controllern führen, welche wiederum die Logik über Services bereitstellen.
 
-*\<Zweck/Verantwortung>*
+#### Whitebox JSON-File
 
-*\<Schnittstelle(n)>*
-
-*\<(Optional) Qualitäts-/Leistungsmerkmale>*
-
-*\<(Optional) Ablageort/Datei(en)>*
-
-*\<(Optional) Erfüllte Anforderungen>*
-
-*\<(optional) Offene Punkte/Probleme/Risiken>*
-
-### \<Name Blackbox 2>
-
-*\<Blackbox-Template>*
-
-### \<Name Blackbox n>
-
-*\<Blackbox-Template>*
-
-### \<Name Schnittstelle 1>
-
-…
-
-### \<Name Schnittstelle m>
-
-## Ebene 2
-
-Beschreiben Sie den inneren Aufbau (einiger) Bausteine aus Ebene 1 als
-Whitebox.
-
-Welche Bausteine Ihres Systems Sie hier beschreiben, müssen Sie selbst
-entscheiden. Bitte stellen Sie dabei Relevanz vor Vollständigkeit.
-Skizzieren Sie wichtige, überraschende, riskante, komplexe oder
-besonders volatile Bausteine. Normale, einfache oder standardisierte
-Teile sollten Sie weglassen.
-
-### Whitebox *\<Baustein 1>*
-
-…zeigt das Innenleben von *Baustein 1*.
-
-*\<Whitebox-Template>*
-
-### Whitebox *\<Baustein 2>*
-
-*\<Whitebox-Template>*
-
-…
-
-### Whitebox *\<Baustein m>*
-
-*\<Whitebox-Template>*
-
-## Ebene 3
-
-Beschreiben Sie den inneren Aufbau (einiger) Bausteine aus Ebene 2 als
-Whitebox.
-
-Bei tieferen Gliederungen der Architektur kopieren Sie diesen Teil von
-arc42 für die weiteren Ebenen.
-
-### Whitebox \<\_Baustein x.1\_\>
-
-…zeigt das Innenleben von *Baustein x.1*.
-
-*\<Whitebox-Template>*
-
-### Whitebox \<\_Baustein x.2\_\>
-
-*\<Whitebox-Template>*
-
-### Whitebox \<\_Baustein y.1\_\>
-
-*\<Whitebox-Template>*
+- **Innere Bausteine**: Dateistruktur, Parser.
+- **Beschreibung**: Die JSON-File enthält die Daten in einer strukturierten Form, die über einen Parser in der Flask-API verarbeitet werden.
 
 # Laufzeitsicht
+
+![Sequenz Diagramm drawio (1)](https://github.com/studPe/WhoAmI/assets/158460492/2c8bbfe3-8ae9-4213-a39a-f35d929678d6)
+
 
 <div class="formalpara-title">
 
