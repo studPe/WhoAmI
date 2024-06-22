@@ -23,9 +23,9 @@ Ziel der Anwendung ist die Entwicklung einer Anwendung, die abgesichert ist Anha
 
 | Qualitätskriterium | Beschreibung | Ziele | Maßnahmen |
 |---------------------|---------------|-------|-----------|
-| **1. Reliability - Zuverlässigkeit** | Die Verlässlichkeit und Betriebsfähigkeit der Anwendung, um Ausfälle und Fehler zu minimieren. | - Hohe Resilienz gegenüber User-Eingaben <br>- Wiederstandsfähigkeit gegenüber Hoherlast | - Umfangreiche Testabdeckung<br>- Lasttestung mit Locust<br>- Logging und Monitoring |
-| **2. Portability - Übertragbarkeit** | Flexibilität einer Anwendung was die Laufzeitumgebung angeht. |- Verringerung von externen Abhänigkeiten<br>- Effiziente Ressourcennutzung | - Verwendung von Docker für isolierte Umgebungen <br> |
-| **3. Usability - Benutzerfreundlichkeit** | Die Benutzerfreundlichkeit der Anwendung, einschließlich Benutzeroberfläche, Navigation und Interaktion. | - Einfach zu bedienende UI<br>- Intuitive Navigation<br>- Schnelle Ladezeiten | - Manuelle UI Prüfungen <br>- Integrationtest<br> |
+| **1. Reliability - Zuverlässigkeit** | Die Verlässlichkeit und Betriebsfähigkeit der Anwendung, um Ausfälle und Fehler zu minimieren. | - Hohe Resilienz gegenüber User-Eingaben <br>- Wiederstandsfähigkeit gegenüber Hoherlast | - Umfangreiche Testabdeckung<br>- Lasttestung mit Locust<br>- CodeQL Überprüfung<br>- SonarQube |
+| **2. Portability - Übertragbarkeit** | Flexibilität einer Anwendung was die Laufzeitumgebung angeht. |- Gradle Pipeline auf verschiedenen Plattformen<br>- PlayWrightest auf verschiedenen Browsern | - Verwendung von Docker für isolierte Umgebungen <br> |
+| **3. Usability - Benutzerfreundlichkeit** | Die Benutzerfreundlichkeit der Anwendung, einschließlich Benutzeroberfläche, Navigation und Interaktion. | - Einfach zu bedienende UI<br>- Intuitive Navigation<br>- Schnelle Ladezeiten | - Manuelle UI Prüfungen (Usability-Tests <br>- Lighthouse Tests<br> |
 
 ## Stakeholder
 
@@ -46,8 +46,8 @@ Die hier beschriebene Anwendung wurde für die Veranstaltung SQS im Sommersemest
 | Test     | Ergebnis/Beobachtung                              | Abgeleitete Maßnahme                  | Frist     |
 |-------------------|---------------------------------------------------|--------------------------------------|-----------|
 | M 40 Jahre  | Nutzer finden den Button "Schließen" verwirrend              | Button wird verändert       | 22.06.2024|
-| Suchfunktion      | Suchergebnisse sind ungenau                       | Suchalgorithmus verbessern          | 22.06.2024|
-| Ladezeit          | Seite lädt langsam                                | Serverleistung erhöhen              | 22.06.2024|
+| W 54      | Oberflächen Design wenig ansprechend | - zuküftige verbessertes Design | 30.06.2024|
+| W 23         |         PWA muss in manchen Fällen manuell refreshed werden                       | Auto Refresh             | 22.06.2024|
 
 
 # Kontextabgrenzung
