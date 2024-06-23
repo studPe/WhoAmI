@@ -1,0 +1,33 @@
+name: Lighthouse
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install Lighthouse
+      run: npm install -g lighthouse
+
+    - name: Run Lighthouse
+      run: lighthouse localhost:8080 --output json --output-path ./lighthouse-results.json
+
+    - name: Upload Lighthouse Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: lighthouse-results
+        path: ./lighthouse-results.json
