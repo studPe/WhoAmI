@@ -24,7 +24,7 @@ jobs:
       run: npm install -g lighthouse
 
     - name: Run Lighthouse
-      run: lighthouse localhost:8080 --output json --output-path ./lighthouse-results.json --chrome-flags="--headless --no-sandbox --disable-gpu"
+      run: lighthouse http://localhost:8080 --output json --output-path ./lighthouse-results.json --chrome-flags="--headless --no-sandbox --disable-gpu"
 
     - name: Upload Lighthouse Results
       uses: actions/upload-artifact@v2
