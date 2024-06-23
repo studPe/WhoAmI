@@ -308,6 +308,10 @@ Ausdrucksmöglichkeiten. Nutzen Sie beispielsweise:
 
 # Verteilungssicht
 
+
+![Verteilungsdiagramm drawio](https://github.com/studPe/WhoAmI/assets/158460492/a3277aea-c0ce-4142-a915-dfcb2988c13f)
+
+
 <div class="formalpara-title">
 
 **Inhalt**
