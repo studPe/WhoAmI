@@ -37,7 +37,7 @@ To view the latest Lighthouse report, follow these steps:
 4. Download the `lighthouse-report` artifact.
 5. Open the `lighthouse-report.html` file in a web browser to view the report.
 
-You can view the detailed Lighthouse report by opening the downloaded `lighthouse-report.html` file in a web browser.
+You can view the detailed Lighthouse report by opening the downloaded `lighthouse-report.html` file in a web browser. => Displays a WhitePage / Values are pretty correct :)
 
 ## Stakeholder
 
