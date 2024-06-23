@@ -79,7 +79,7 @@ public class webinterfaceTest {
         when(mockReader.readLine()).thenReturn(jsonResponse, null);
 
         // Act
-        assertThrows(ConnectException.class, () -> webinterface.getRandomName());
+        assertThrows(ConnectException.class, () -> webInterface.getRandomName());
     }
 
     @Test
@@ -96,6 +96,6 @@ public class webinterfaceTest {
         when(mockConnection.getInputStream()).thenReturn(mockInputStream);
         when(mockReader.readLine()).thenReturn("{\"name\": [\"John\", \"Jane\", \"Doe\"]}", null);
         // Assert
-        assertThrows(ConnectException.class, () -> webinterface.getRandomName(seed));
+        assertThrows(IllegalStateException.class, () -> webInterface.getRandomName(seed));
     }
 }
