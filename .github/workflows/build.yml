@@ -31,7 +31,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: Start Docker container
-        run: docker run -d <stupe562/docker.flask:latest>
+        run: docker run -d stupe562/docker.flask:latest
       - name: Wait for Docker container to start
         run: sleep 10
       - name: Build and analyze
