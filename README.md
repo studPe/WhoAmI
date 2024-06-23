@@ -279,8 +279,8 @@ Ausdrucksmöglichkeiten. Nutzen Sie beispielsweise:
 
 -   …
 
-### Laufzeitsicht
-#### Szenario 1: Start eines Spiels
+# Laufzeitsicht
+## *\Szenario 1: Start eines Spiels>*
 
 **Ablaufbeschreibung**
 
@@ -301,9 +301,6 @@ Ausdrucksmöglichkeiten. Nutzen Sie beispielsweise:
    - Basierend auf der Eingabe des Benutzers generiert das Frontend Feedback und zeigt dieses im Browser an.
 
 
-## *\<Bezeichnung Laufzeitszenario 2>*
-
-…
 
 ## *\<Bezeichnung Laufzeitszenario n>*
 
