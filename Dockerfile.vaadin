@@ -1,32 +1,95 @@
+# Use a Gradle image to build the Vaadin application
+FROM gradle:latest AS build
+WORKDIR /app
+# Copy the project files into the Docker image
+COPY whoami /app
+# Use Gradle to build the application
+RUN gradle clean build --no-daemon
+
+# Use OpenJDK for the runtime image
 FROM openjdk:17
-COPY whoami/target/whoami.main.jar app.jar
+WORKDIR /app
+# Copy the built application JAR from the build stage
+COPY --from=build /home/gradle/whoami/build/libs/*.jar /app/app.jar
+# Expose port 8080 for the application
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Command to run the application
+CMD ["java", "-jar", "app.jar"]
+
+# FROM gradle:latest AS BUILD
+# WORKDIR /usr/app/
+# COPY . . 
+# RUN ls -la ./whoami
+# RUN chmod +x ./gradlew
+# RUN ./gradlew clean build -Pvaadin.productionMode --no-daemon
+
+
+
+# # Package stage
+
+# FROM openjdk:17
+# ENV JAR_NAME=app.jar
+# ENV APP_HOME=/usr/app/
+# WORKDIR $APP_HOME
+# COPY --from=BUILD $APP_HOME .
+# EXPOSE 8080
+# ENTRYPOINT exec java -jar $APP_HOME/build/libs/whoami.jar 
+
+# RUN mkdir /app
+
+
+
+# WORKDIR /usr/app/
+# COPY whoami/gradlew ./
+# COPY whoami/gradle ./gradle
+# COPY whoami/build.gradle ./build.gradle
+# COPY whoami/settings.gradle ./settings.gradle
+
+# RUN chmod +x gradlew
+# RUN ./whoami/gradlew clean build -Pvaadin.productionMode --no-daemon
+
+# # Set the working directory inside the container
+
+# FROM openjdk:latest
+# ENV JAR_NAME=app.jar
+# ENV APP_HOME=/usr/app/
+# WORKDIR $APP_HOME
+# COPY --from=BUILD $APP_HOME .
+# EXPOSE 8080
+# ENTRYPOINT ["java", "-jar", "app.jar"]
+
+# Define the command to run the application
 
 
 # FROM openjdk:17
-# WORKDIR /app
-# COPY whoami /app
-# RUN cd whoami && ./gradlew clean build '-Pvaadin.productionMode' --stacktrace --info --no-daemon
+# COPY whoami/target/whoami.main.jar app.jar
 # EXPOSE 8080
-# CMD java -jar -Dspring.profiles.active=prod app.jar
+# ENTRYPOINT ["java", "-jar", "/app.jar"]
+
+
+# # FROM openjdk:17
+# # WORKDIR /app
+# # COPY whoami /app
+# # RUN cd whoami && ./gradlew clean build '-Pvaadin.productionMode' --stacktrace --info --no-daemon
+# # EXPOSE 8080
+# # CMD java -jar -Dspring.profiles.active=prod app.jar
 
 
 
-# # Dockerfile for Vaadin Frontend
-# FROM openjdk:11-jdk-slim
+# # # Dockerfile for Vaadin Frontend
+# # FROM openjdk:11-jdk-slim
 
-# # Set the working directory
-# WORKDIR /app
+# # # Set the working directory
+# # WORKDIR /app
 
-# # Copy the Gradle project
-# COPY whoami /app
+# # # Copy the Gradle project
+# # COPY whoami /app
 
-# # Build the project
-# RUN ./gradlew build
+# # # Build the project
+# # RUN ./gradlew build
 
-# # Expose the port
-# EXPOSE 8080
+# # # Expose the port
+# # EXPOSE 8080
 
-# # Start the Vaadin application
-# CMD ["./gradlew", "bootRun"]
+# # # Start the Vaadin application
+# # CMD ["./gradlew", "bootRun"]
