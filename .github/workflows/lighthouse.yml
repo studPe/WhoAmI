@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: List files in the directory
+        run: ls -la ./.github/workflows/
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v12
         with:
             urls: 'http://localhost:8080'
-            configPath: '.github/workflows/lighthouserc-assertions.json'
+            configPath: './.github/workflows/lighthouserc-assertions.json'
