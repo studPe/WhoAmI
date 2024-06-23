@@ -1,19 +1,47 @@
-name: Lighthouse
+name: Run Lighthouse Report
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - name: List files in the directory
-        run: ls -la ./.github/workflows/
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v12
-        with:
-            urls: 'http://localhost:8080'
-            configPath: './.github/workflows/lighthouserc-assertions.json'
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Pull Docker image from Docker Hub
+      run: |
+        docker pull stupe562/docker.vaadin:latest
+
+    - name: Run Docker container
+      run: |
+        docker run -d -p 8080:8080 --name my-app-container stupe562/docker.vaadin:latest
+
+    - name: Wait for the container to be ready
+      run: |
+        until curl -s http://localhost:8080; do
+          echo "Waiting for the container to be ready..."
+          sleep 5
+        done
+
+    - name: Install Lighthouse CLI
+      run: npm install -g lighthouse
+
+    - name: Run Lighthouse
+      run: |
+        lighthouse http://localhost:8080 --chrome-flags="--headless --no-sandbox --ignore-certificate-errors --disable-gpu" --output html --output-path ./lighthouse-report.html
+
+    - name: Upload Lighthouse report
+      uses: actions/upload-artifact@v2
+      with:
+        name: lighthouse-report
+        path: ./lighthouse-report.html
+
+    - name: Stop and remove Docker container
+      run: |
+        docker stop my-app-container
+        docker rm my-app-container
