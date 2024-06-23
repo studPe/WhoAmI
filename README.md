@@ -23,9 +23,9 @@ Ziel der Anwendung ist die Entwicklung einer Anwendung, die abgesichert ist Anha
 
 | Qualitätskriterium | Beschreibung | Ziele | Maßnahmen |
 |---------------------|---------------|-------|-----------|
-| **1. Reliability - Zuverlässigkeit** | Die Verlässlichkeit und Betriebsfähigkeit der Anwendung, um Ausfälle und Fehler zu minimieren. | - Hohe Resilienz gegenüber User-Eingaben <br>- Wiederstandsfähigkeit gegenüber Hoherlast | - Umfangreiche Testabdeckung<br>- Lasttestung mit Locust<br>- Logging und Monitoring |
-| **2. Portability - Übertragbarkeit** | Flexibilität einer Anwendung was die Laufzeitumgebung angeht. |- Verringerung von externen Abhänigkeiten<br>- Effiziente Ressourcennutzung | - Verwendung von Docker für isolierte Umgebungen <br> |
-| **3. Usability - Benutzerfreundlichkeit** | Die Benutzerfreundlichkeit der Anwendung, einschließlich Benutzeroberfläche, Navigation und Interaktion. | - Einfach zu bedienende UI<br>- Intuitive Navigation<br>- Schnelle Ladezeiten | - Manuelle UI Prüfungen <br>- Integrationtest<br> |
+| **1. Reliability - Zuverlässigkeit** | Die Verlässlichkeit und Betriebsfähigkeit der Anwendung, um Ausfälle und Fehler zu minimieren. | - Hohe Resilienz gegenüber User-Eingaben <br>- Wiederstandsfähigkeit gegenüber Hoherlast | - Umfangreiche Testabdeckung<br>- Lasttestung mit Locust<br>- CodeQL Überprüfung<br>- SonarQube |
+| **2. Portability - Übertragbarkeit** | Flexibilität einer Anwendung was die Laufzeitumgebung angeht. |- Gradle Pipeline auf verschiedenen Plattformen<br>- PlayWrightest auf verschiedenen Browsern | - Verwendung von Docker für isolierte Umgebungen <br> |
+| **3. Usability - Benutzerfreundlichkeit** | Die Benutzerfreundlichkeit der Anwendung, einschließlich Benutzeroberfläche, Navigation und Interaktion. | - Einfach zu bedienende UI<br>- Intuitive Navigation<br>- Schnelle Ladezeiten | - Manuelle UI Prüfungen (Usability-Tests <br>- Lighthouse Tests<br> |
 
 ## Stakeholder
 
@@ -46,8 +46,8 @@ Die hier beschriebene Anwendung wurde für die Veranstaltung SQS im Sommersemest
 | Test     | Ergebnis/Beobachtung                              | Abgeleitete Maßnahme                  | Frist     |
 |-------------------|---------------------------------------------------|--------------------------------------|-----------|
 | M 40 Jahre  | Nutzer finden den Button "Schließen" verwirrend              | Button wird verändert       | 22.06.2024|
-| Suchfunktion      | Suchergebnisse sind ungenau                       | Suchalgorithmus verbessern          | 22.06.2024|
-| Ladezeit          | Seite lädt langsam                                | Serverleistung erhöhen              | 22.06.2024|
+| W 54      | Oberflächen Design wenig ansprechend | - zuküftige verbessertes Design | 30.06.2024|
+| W 23         |         PWA muss in manchen Fällen manuell refreshed werden                       | Auto Refresh             | 22.06.2024|
 
 
 # Kontextabgrenzung
@@ -279,19 +279,28 @@ Ausdrucksmöglichkeiten. Nutzen Sie beispielsweise:
 
 -   …
 
-Siehe [Laufzeitsicht](https://docs.arc42.org/section-6/) in der
-online-Dokumentation (auf Englisch!).
+# Laufzeitsicht
+## *\<Szenario 1: Start eines Spiels>*
 
-## *\<Bezeichnung Laufzeitszenario 1>*
+**Ablaufbeschreibung**
 
--   \<hier Laufzeitdiagramm oder Ablaufbeschreibung einfügen>
+1. **Benutzeranfrage im Browser**: Ein Benutzer startet ein Spiel in der Webanwendung.
+2. **Anfrage an das Frontend**: Der Browser sendet eine Anforderung zum Starten eines neuen Spiels an das Frontend.
+3. **Lokale Speicherung der Spiel-ID und des Spielernamens**:
+   - Das Frontend generiert eine neue Spiel-ID und nimmt den Spielernamen auf.
+   - Diese Informationen werden im lokalen Speicher des Browsers gespeichert.
+4. **Anfrage an das Backend (API)**:
+   - Das Frontend sendet eine Anfrage an das Backend, um das Spiel mit der erzeugten Spiel-ID zu initialisieren.
+5. **Datenabruf aus dem JSON-Speicher**:
+   - Das Backend verwendet die Spiel-ID, um aus einer JSON-Datenquelle Namen zu seeden und Spielinformationen abzurufen.
+6. **Rückgabe der Namen an das Frontend**:
+   - Das Backend sendet die abgerufenen Namen zurück an das Frontend.
+7. **Spielaktionen**:
+   - Der Benutzer macht in der Webanwendung einen Spielzug (z.B. eine Schätzung oder Auswahl).
+8. **Feedback zum Benutzer**:
+   - Basierend auf der Eingabe des Benutzers generiert das Frontend Feedback und zeigt dieses im Browser an.
 
--   \<hier Besonderheiten bei dem Zusammenspiel der Bausteine in diesem
-    Szenario erläutern>
 
-## *\<Bezeichnung Laufzeitszenario 2>*
-
-…
 
 ## *\<Bezeichnung Laufzeitszenario n>*
 
