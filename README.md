@@ -311,67 +311,20 @@ Ausdrucksmöglichkeiten. Nutzen Sie beispielsweise:
 
 ![Verteilungsdiagramm drawio](https://github.com/studPe/WhoAmI/assets/158460492/a3277aea-c0ce-4142-a915-dfcb2988c13f)
 
+# Begründung
+Das System wird in einer Container-Umgebung mittels einer Docker-Compose-Datei betrieben, um eine einfache Skalierbarkeit, Portabilität und Konsistenz zu gewährleisten. Docker-Container werden verwendet, um die einzelnen Komponenten des Systems zu isolieren und zu verwalten.
 
-<div class="formalpara-title">
+## Qualitäts- und/oder Leistungsmerkmale
+- **Zuverlässigkeit (Reliability)**: Die Verwendung von isolierten Containern gewährleistet eine hohe Systemzuverlässigkeit, da Fehler in einem Dienst nicht direkt andere Teile des Systems beeinträchtigen.
+- **Portabilität**: Durch Docker wird sichergestellt, dass die Anwendung in verschiedenen Umgebungen konsequent funktioniert, was den Übergang zwischen Entwicklung, Test und Produktion vereinfacht.
+- **Benutzerfreundlichkeit (Usability)**: Die Frontend- und Backend-Dienste sind klar getrennt und über REST-APIs verbunden, was die Wartung und das Debugging des Systems vereinfacht und die Benutzererfahrung verbessert.
 
-**Inhalt**
+## Zuordnung von Bausteinen zu Infrastruktur
 
-</div>
-
-Die Verteilungssicht beschreibt:
-
-1.  die technische Infrastruktur, auf der Ihr System ausgeführt wird,
-    mit Infrastrukturelementen wie Standorten, Umgebungen, Rechnern,
-    Prozessoren, Kanälen und Netztopologien sowie sonstigen
-    Bestandteilen, und
-
-2.  die Abbildung von (Software-)Bausteinen auf diese Infrastruktur.
-
-Häufig laufen Systeme in unterschiedlichen Umgebungen, beispielsweise
-Entwicklung-/Test- oder Produktionsumgebungen. In solchen Fällen sollten
-Sie alle relevanten Umgebungen aufzeigen.
-
-Nutzen Sie die Verteilungssicht insbesondere dann, wenn Ihre Software
-auf mehr als einem Rechner, Prozessor, Server oder Container abläuft
-oder Sie Ihre Hardware sogar selbst konstruieren.
-
-Aus Softwaresicht genügt es, auf die Aspekte zu achten, die für die
-Softwareverteilung relevant sind. Insbesondere bei der
-Hardwareentwicklung kann es notwendig sein, die Infrastruktur mit
-beliebigen Details zu beschreiben.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Software läuft nicht ohne Infrastruktur. Diese zugrundeliegende
-Infrastruktur beeinflusst Ihr System und/oder querschnittliche
-Lösungskonzepte, daher müssen Sie diese Infrastruktur kennen.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Das oberste Verteilungsdiagramm könnte bereits in Ihrem technischen
-Kontext enthalten sein, mit Ihrer Infrastruktur als EINE Blackbox. Jetzt
-zoomen Sie in diese Infrastruktur mit weiteren Verteilungsdiagrammen
-hinein:
-
--   Die UML stellt mit Verteilungsdiagrammen (Deployment diagrams) eine
-    Diagrammart zur Verfügung, um diese Sicht auszudrücken. Nutzen Sie
-    diese, evtl. auch geschachtelt, wenn Ihre Verteilungsstruktur es
-    verlangt.
-
--   Falls Ihre Infrastruktur-Stakeholder andere Diagrammarten
-    bevorzugen, die beispielsweise Prozessoren und Kanäle zeigen, sind
-    diese hier ebenfalls einsetzbar.
-
-Siehe [Verteilungssicht](https://docs.arc42.org/section-7/) in der
-online-Dokumentation (auf Englisch!).
+| Baustein          | Infrastruktur                                                              |
+|-------------------|----------------------------------------------------------------------------|
+| **Frontend-Container** | Docker-Container "WhoAmI-Vaadin-Frontend" wird bereitgestellt in einem generischen Frontend-Container |
+| **Backend-Container**  | Docker-Container "Flask-API" wird bereitgestellt in einem Gunicorn-gehosteten Container |
 
 ## Infrastruktur Ebene 1
 
