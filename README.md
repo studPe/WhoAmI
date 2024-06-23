@@ -87,57 +87,6 @@ Technische Umsetzung:
 
 # Bausteinsicht
 
-<div class="formalpara-title">
-
-**Inhalt**
-
-</div>
-
-Die Bausteinsicht zeigt die statische Zerlegung des Systems in Bausteine
-(Module, Komponenten, Subsysteme, Klassen, Schnittstellen, Pakete,
-Bibliotheken, Frameworks, Schichten, Partitionen, Tiers, Funktionen,
-Makros, Operationen, Datenstrukturen, …) sowie deren Abhängigkeiten
-(Beziehungen, Assoziationen, …)
-
-Diese Sicht sollte in jeder Architekturdokumentation vorhanden sein. In
-der Analogie zum Hausbau bildet die Bausteinsicht den *Grundrissplan*.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Behalten Sie den Überblick über den Quellcode, indem Sie die statische
-Struktur des Systems durch Abstraktion verständlich machen.
-
-Damit ermöglichen Sie Kommunikation auf abstrakterer Ebene, ohne zu
-viele Implementierungsdetails offenlegen zu müssen.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Die Bausteinsicht ist eine hierarchische Sammlung von Blackboxen und
-Whiteboxen (siehe Abbildung unten) und deren Beschreibungen.
-
-![Hierarchie in der Bausteinsicht](images/05_building_blocks-DE.png)
-
-**Ebene 1** ist die Whitebox-Beschreibung des Gesamtsystems, zusammen
-mit Blackbox-Beschreibungen der darin enthaltenen Bausteine.
-
-**Ebene 2** zoomt in einige Bausteine der Ebene 1 hinein. Sie enthält
-somit die Whitebox-Beschreibungen ausgewählter Bausteine der Ebene 1,
-jeweils zusammen mit Blackbox-Beschreibungen darin enthaltener
-Bausteine.
-
-**Ebene 3** zoomt in einige Bausteine der Ebene 2 hinein, usw.
-
-Siehe [Bausteinsicht](https://docs.arc42.org/section-5/) in der
-online-Dokumentation (auf Englisch!).
-
 ## Whitebox Gesamtsystem
 
 ![WhiteBox drawio (1)](https://github.com/studPe/WhoAmI/assets/158460492/538d920f-f195-40bd-ab1a-fb309f43254d)
@@ -326,55 +275,6 @@ Das System wird in einer Container-Umgebung mittels einer Docker-Compose-Datei b
 | **Frontend-Container** | Docker-Container "WhoAmI-Vaadin-Frontend" wird bereitgestellt in einem generischen Frontend-Container |
 | **Backend-Container**  | Docker-Container "Flask-API" wird bereitgestellt in einem Gunicorn-gehosteten Container |
 
-## Infrastruktur Ebene 1
-
-An dieser Stelle beschreiben Sie (als Kombination von Diagrammen mit
-Tabellen oder Texten):
-
--   die Verteilung des Gesamtsystems auf mehrere Standorte, Umgebungen,
-    Rechner, Prozessoren o. Ä., sowie die physischen Verbindungskanäle
-    zwischen diesen,
-
--   wichtige Begründungen für diese Verteilungsstruktur,
-
--   Qualitäts- und/oder Leistungsmerkmale dieser Infrastruktur,
-
--   Zuordnung von Softwareartefakten zu Bestandteilen der Infrastruktur
-
-Für mehrere Umgebungen oder alternative Deployments kopieren Sie diesen
-Teil von arc42 für alle wichtigen Umgebungen/Varianten.
-
-***\<Übersichtsdiagramm>***
-
-Begründung  
-*\<Erläuternder Text>*
-
-Qualitäts- und/oder Leistungsmerkmale  
-*\<Erläuternder Text>*
-
-Zuordnung von Bausteinen zu Infrastruktur  
-*\<Beschreibung der Zuordnung>*
-
-## Infrastruktur Ebene 2
-
-An dieser Stelle können Sie den inneren Aufbau (einiger)
-Infrastrukturelemente aus Ebene 1 beschreiben.
-
-Für jedes Infrastrukturelement kopieren Sie die Struktur aus Ebene 1.
-
-### *\<Infrastrukturelement 1>*
-
-*\<Diagramm + Erläuterungen>*
-
-### *\<Infrastrukturelement 2>*
-
-*\<Diagramm + Erläuterungen>*
-
-…
-
-### *\<Infrastrukturelement n>*
-
-*\<Diagramm + Erläuterungen>*
 
 # Querschnittliche Konzepte
 
