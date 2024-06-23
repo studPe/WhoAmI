@@ -280,7 +280,7 @@ Ausdrucksmöglichkeiten. Nutzen Sie beispielsweise:
 -   …
 
 # Laufzeitsicht
-## *\Szenario 1: Start eines Spiels>*
+## *\<Szenario 1: Start eines Spiels>*
 
 **Ablaufbeschreibung**
 
