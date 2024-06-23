@@ -34,30 +34,12 @@ jobs:
     - name: Run Lighthouse
       run: |
         lighthouse http://localhost:8080 --chrome-flags="--headless --no-sandbox --ignore-certificate-errors --disable-gpu" --output html --output-path ./lighthouse-report.html
-    
+
     - name: Upload Lighthouse report
       uses: actions/upload-artifact@v2
       with:
         name: lighthouse-report
         path: ./lighthouse-report.html
-
-    - name: Setup Git
-      run: |
-        git config --global user.name 'github-actions'
-        git config --global user.email 'github-actions@github.com'
-
-    - name: Commit and Push Lighthouse Report to gh-pages
-      run: |
-        git checkout --orphan gh-pages
-        git add -f ./lighthouse-report.html
-        git commit -m "Add Lighthouse report"
-        git push -f origin gh-pages
-
-    - name: Stop and remove Docker container
-      run: |
-        docker stop my-app-container
-        docker rm my-app-container
-
 
     - name: Stop and remove Docker container
       run: |
