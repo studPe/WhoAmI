@@ -1,4 +1,4 @@
-etzhrte3# WhoAmI Webanwendung
+# WhoAmI Webanwendung
 ![WhoAmI](https://github.com/studPe/WhoAmI/assets/158460492/7515a185-aac5-4fd4-8d3e-746895c84508)
 
 
@@ -26,6 +26,18 @@ Ziel der Anwendung ist die Entwicklung einer Anwendung, die abgesichert ist Anha
 | **1. Reliability - Zuverlässigkeit** | Die Verlässlichkeit und Betriebsfähigkeit der Anwendung, um Ausfälle und Fehler zu minimieren. | - Hohe Resilienz gegenüber User-Eingaben <br>- Wiederstandsfähigkeit gegenüber Hoherlast | - Umfangreiche Testabdeckung<br>- Lasttestung mit Locust<br>- CodeQL Überprüfung<br>- SonarQube |
 | **2. Portability - Übertragbarkeit** | Flexibilität einer Anwendung was die Laufzeitumgebung angeht. |- Gradle Pipeline auf verschiedenen Plattformen<br>- PlayWrightest auf verschiedenen Browsern | - Verwendung von Docker für isolierte Umgebungen <br> |
 | **3. Usability - Benutzerfreundlichkeit** | Die Benutzerfreundlichkeit der Anwendung, einschließlich Benutzeroberfläche, Navigation und Interaktion. | - Einfach zu bedienende UI<br>- Intuitive Navigation<br>- Schnelle Ladezeiten | - Manuelle UI Prüfungen (Usability-Tests <br>- Lighthouse Tests<br> |
+
+## Lighthouse Report
+
+To view the latest Lighthouse report, follow these steps:
+
+1. Go to the [Actions](https://github.com/<your-username>/<your-repo>/actions) tab of this repository.
+2. Select the latest workflow run.
+3. Scroll down to the "Artifacts" section.
+4. Download the `lighthouse-report` artifact.
+5. Open the `lighthouse-report.html` file in a web browser to view the report.
+
+You can view the detailed Lighthouse report by opening the downloaded `lighthouse-report.html` file in a web browser.
 
 ## Stakeholder
 
@@ -276,106 +288,17 @@ Das System wird in einer Container-Umgebung mittels einer Docker-Compose-Datei b
 | **Backend-Container**  | Docker-Container "Flask-API" wird bereitgestellt in einem Gunicorn-gehosteten Container |
 
 
-# Querschnittliche Konzepte
+# Querschnittliche Konzepte der WhoAmI Webanwendung
 
-<div class="formalpara-title">
-
-**Inhalt**
-
-</div>
-
-Dieser Abschnitt beschreibt übergreifende, prinzipielle Regelungen und
-Lösungsansätze, die an mehreren Stellen (=*querschnittlich*) relevant
-sind.
-
-Solche Konzepte betreffen oft mehrere Bausteine. Dazu können vielerlei
-Themen gehören, beispielsweise:
-
--   Modelle, insbesondere fachliche Modelle
-
--   Architektur- oder Entwurfsmuster
-
--   Regeln für den konkreten Einsatz von Technologien
-
--   prinzipielle — meist technische — Festlegungen übergreifender Art
-
--   Implementierungsregeln
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Konzepte bilden die Grundlage für *konzeptionelle Integrität*
-(Konsistenz, Homogenität) der Architektur und damit eine wesentliche
-Grundlage für die innere Qualität Ihrer Systeme.
-
-Manche dieser Themen lassen sich nur schwer als Baustein in der
-Architektur unterbringen (z.B. das Thema „Sicherheit“).
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Kann vielfältig sein:
-
--   Konzeptpapiere mit beliebiger Gliederung,
-
--   übergreifende Modelle/Szenarien mit Notationen, die Sie auch in den
-    Architektursichten nutzen,
-
--   beispielhafte Implementierung speziell für technische Konzepte,
-
--   Verweise auf „übliche“ Nutzung von Standard-Frameworks
-    (beispielsweise die Nutzung von Hibernate als Object/Relational
-    Mapper).
-
-<div class="formalpara-title">
-
-**Struktur**
-
-</div>
-
-Eine mögliche (nicht aber notwendige!) Untergliederung dieses
-Abschnittes könnte wie folgt aussehen (wobei die Zuordnung von Themen zu
-den Gruppen nicht immer eindeutig ist):
-
--   Fachliche Konzepte
-
--   User Experience (UX)
-
--   Sicherheitskonzepte (Safety und Security)
-
--   Architektur- und Entwurfsmuster
-
--   Unter-der-Haube
-
--   Entwicklungskonzepte
-
--   Betriebskonzepte
-
-![Possible topics for crosscutting
-concepts](images/08-Crosscutting-Concepts-Structure-DE.png)
-
-Siehe [Querschnittliche Konzepte](https://docs.arc42.org/section-8/) in
-der online-Dokumentation (auf Englisch).
-
-## *\<Konzept 1>*
-
-*\<Erklärung>*
-
-## *\<Konzept 2>*
-
-*\<Erklärung>*
-
-…
-
-## *\<Konzept n>*
-
-*\<Erklärung>*
+| Konzept                    | Beschreibung                                                                                  | Maßnahmen/Umsetzung                                                                      |
+|----------------------------|-----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| **Sicherheit**             | Schutz der Anwendung und Daten vor unbefugtem Zugriff und Angriffen.                          | - Implementierung von Authentifizierungs- und Autorisierungsmechanismen<br>- Nutzung von HTTPS<br>- Regelmäßige Sicherheitsupdates |
+| **Performance**            | Effizienz und Geschwindigkeit der Anwendung unter verschiedenen Lastbedingungen.              | - Lasttestung mit Locust<br>- Optimierung der Datenbankabfragen<br>- Caching-Strategien    |
+| **Zuverlässigkeit**        | Fähigkeit der Anwendung, konsistent und fehlerfrei zu funktionieren.                         | - Umfangreiche Testabdeckung<br>- Automatisierte Tests (Unit- und Integrationstests)<br>- Monitoring und Logging                  |
+| **Benutzerfreundlichkeit** | Einfachheit und Effizienz, mit der Benutzer die Anwendung nutzen können.                     | - Intuitive UI/UX-Designs<br>- Usability-Tests und Feedbackrunden<br>- Responsive Design  |
+| **Übertragbarkeit**        | Fähigkeit der Anwendung, in verschiedenen Umgebungen betrieben zu werden.                     | - Verwendung von Docker für containerisierte Umgebungen<br>- Unterstützung mehrerer Plattformen und Browser                       |
+| **Wartbarkeit**            | Einfachheit, mit der die Anwendung geändert und erweitert werden kann.                        | - Modulare Architektur<br>- Gut dokumentierter Code<br>- Einsatz von CI/CD-Pipelines       |
+| **Kompatibilität**         | Fähigkeit der Anwendung, mit anderen Systemen und Technologien zu interagieren.                | - Nutzung standardisierter Schnittstellen (APIs)<br>- Regelmäßige Kompatibilitätstests   |
 
 # Architekturentscheidungen
 
@@ -415,54 +338,6 @@ der online-Dokumentation (auf Englisch).
 |                              | Nutzungsszenario: Das System ist barrierefrei und für alle Benutzer zugänglich.                 | Prüfung der Anwendung mit Lighthouse und Umsetzung der Vorschläge |
 |                              | Änderungsszenario: Neue Barrierefreiheitsstandards werden berücksichtigt und umgesetzt.          | Barrierefreiheit                                      |
 
-
-
-<div class="formalpara-title">
-
-**Inhalt**
-
-</div>
-
-Konkretisierung der (in der Praxis oftmals vagen oder impliziten)
-Qualitätsanforderungen durch (Qualitäts-)Szenarien.
-
-Diese Szenarien beschreiben, was beim Eintreffen eines Stimulus auf ein
-System in bestimmten Situationen geschieht.
-
-Wesentlich sind zwei Arten von Szenarien:
-
--   Nutzungsszenarien (auch bekannt als Anwendungs- oder
-    Anwendungsfallszenarien) beschreiben, wie das System zur Laufzeit
-    auf einen bestimmten Auslöser reagieren soll. Hierunter fallen auch
-    Szenarien zur Beschreibung von Effizienz oder Performance. Beispiel:
-    Das System beantwortet eine Benutzeranfrage innerhalb einer Sekunde.
-
--   Änderungsszenarien beschreiben eine Modifikation des Systems oder
-    seiner unmittelbaren Umgebung. Beispiel: Eine zusätzliche
-    Funktionalität wird implementiert oder die Anforderung an ein
-    Qualitätsmerkmal ändert sich.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Szenarien operationalisieren Qualitätsanforderungen und machen deren
-Erfüllung mess- oder entscheidbar.
-
-Insbesondere wenn Sie die Qualität Ihrer Architektur mit Methoden wie
-ATAM überprüfen wollen, bedürfen die in Abschnitt 1.2 genannten
-Qualitätsziele einer weiteren Präzisierung bis auf die Ebene von
-diskutierbaren und nachprüfbaren Szenarien.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Entweder tabellarisch oder als Freitext.
 
 # Risiken und technische Schulden
 
@@ -591,38 +466,12 @@ To build your app for production in CI, just run:
 
 # Glossar
 
-<div class="formalpara-title">
-
-**Inhalt**
-
-</div>
-
-Die wesentlichen fachlichen und technischen Begriffe, die Stakeholder im
-Zusammenhang mit dem System verwenden.
-
-Nutzen Sie das Glossar ebenfalls als Übersetzungsreferenz, falls Sie in
-mehrsprachigen Teams arbeiten.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Sie sollten relevante Begriffe klar definieren, so dass alle Beteiligten
-
--   diese Begriffe identisch verstehen, und
-
--   vermeiden, mehrere Begriffe für die gleiche Sache zu haben.
-
-Zweispaltige Tabelle mit \<Begriff> und \<Definition>.
-
-Eventuell weitere Spalten mit Übersetzungen, falls notwendig.
-
-Siehe [Glossar](https://docs.arc42.org/section-12/) in der
-online-Dokumentation (auf Englisch!).
-
-| Begriff        | Definition        |
-|----------------|-------------------|
-| *\<Begriff-1>* | *\<Definition-1>* |
-| *\<Begriff-2*  | *\<Definition-2>* |
+| **Begriff**             | **Definition**                                                                                               |
+|-------------------------|--------------------------------------------------------------------------------------------------------------|
+| **Vaadin**              | Ein Framework zur Erstellung von Webanwendungen in Java, das es Entwicklern ermöglicht, benutzerfreundliche Benutzeroberflächen zu erstellen.     |
+| **Flask**               | Ein leichtgewichtiges Python-Webframework, das es Entwicklern ermöglicht, schnell Webanwendungen und APIs zu erstellen.                            |
+| **Gunicorn**            | Ein Python WSGI HTTP-Server für Unix, der entwickelt wurde, um Webanwendungen effizient zu betreiben.                                              |
+| **Locust**              | Ein Open-Source-Lasttest-Tool in Python, das es ermöglicht, die Leistung von Webanwendungen durch die Simulation von Benutzerlasten zu testen.      |
+| **Docker**              | Eine Plattform zur Erstellung, Bereitstellung und Ausführung von Anwendungen in Containern, die eine konsistente Umgebung bieten.                   |
+| **Docker Compose**      | Ein Tool zur Definition und Ausführung von Multi-Container Docker-Anwendungen, das es ermöglicht, die Anwendungsdienste in einer YAML-Datei zu konfigurieren. |
+| **GitHub Actions**      | Ein CI/CD-Tool (Continuous Integration and Continuous Deployment) von GitHub, das es Entwicklern ermöglicht, Workflows für die Automatisierung von Builds, Tests und Deployments zu erstellen. |
