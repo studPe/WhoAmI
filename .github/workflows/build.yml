@@ -42,5 +42,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: cd whoami && ./gradlew sonar
+        run: cd whoami && ./gradlew sonar -Dsonar.qualitygate.wait=true
         continue-on-error: true
