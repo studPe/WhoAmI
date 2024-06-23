@@ -19,7 +19,7 @@ jobs:
 
     - name: Run Docker container
       run: |
-        docker run -d -p 8080:8080 stupe562/docker.vaadin:latest
+        docker run -d -p 8080:8080 --name my-app-container stupe562/docker.vaadin:latest
 
     - name: Wait for the container to be ready
       run: |
@@ -33,7 +33,7 @@ jobs:
 
     - name: Run Lighthouse
       run: |
-        lighthouse http://127.0.0.1:8080 --chrome-flags="--headless --no-sandbox --ignore-certificate-errors --disable-gpu" --output html --output-path ./lighthouse-report.html
+        lighthouse http://127.0.0.1:8080 --chrome-flags="--headless --no-sandbox --disable-software-rasterizer --ignore-certificate-errors --disable-gpu" --output html --output-path ./lighthouse-report.html
 
     - name: Upload Lighthouse report
       uses: actions/upload-artifact@v4
