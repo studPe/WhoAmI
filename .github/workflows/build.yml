@@ -30,6 +30,10 @@ jobs:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
+      - name: Start Docker container
+        run: docker run -d <${{ secrets.DOCKER_USERNAME }}/docker.flask:latest>
+      - name: Wait for Docker container to start
+        run: sleep 10
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
