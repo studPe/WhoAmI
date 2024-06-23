@@ -34,15 +34,15 @@ jobs:
     - name: Wait 
       run: sleep 20
 
-    - name: Run Lighthouse
-      run: |
-        lighthouse http://127.0.0.1:8080 --chrome-flags="--headless --no-sandbox --ignore-certificate-errors --disable-gpu" --output html --output-path ./lighthouse-report.html
+    # - name: Run Lighthouse
+    #   run: |
+    #     lighthouse http://127.0.0.1:8080 --chrome-flags="--headless --no-sandbox --ignore-certificate-errors --disable-gpu" --output html --output-path ./lighthouse-report.html
 
-    - name: Upload Lighthouse report
-      uses: actions/upload-artifact@v4
-      with:
-        name: lighthouse-report
-        path: ./lighthouse-report.html
+    # - name: Upload Lighthouse report
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: lighthouse-report
+    #     path: ./lighthouse-report.html
 
     - name: Stop and remove Docker container
       run: |
