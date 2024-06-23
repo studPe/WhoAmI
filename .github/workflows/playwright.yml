@@ -46,12 +46,3 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
-  lighthouse:
-    runs-on: ubuntu-latest
-    steps:
-        - uses: actions/checkout@v4
-        - name: Audit URLs using Lighthouse
-          uses: treosh/lighthouse-ci-action@v12
-          with:
-            urls: 'http://localhost:8080'
-                  #configPath: './lighthouserc.json'
