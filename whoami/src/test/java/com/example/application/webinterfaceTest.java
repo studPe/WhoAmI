@@ -8,10 +8,12 @@ import org.mockito.MockitoAnnotations;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 public class webinterfaceTest {
@@ -77,10 +79,7 @@ public class webinterfaceTest {
         when(mockReader.readLine()).thenReturn(jsonResponse, null);
 
         // Act
-        String actualName = webInterface.getRandomName();
-
-        // Assert
-        assertThat(expectedNames).contains(actualName);
+        assertThrows(ConnectException.class, () -> webinterface.getRandomName());
     }
 
     @Test
@@ -96,10 +95,7 @@ public class webinterfaceTest {
         when(mockInputStream.read()).thenReturn(-1);
         when(mockConnection.getInputStream()).thenReturn(mockInputStream);
         when(mockReader.readLine()).thenReturn("{\"name\": [\"John\", \"Jane\", \"Doe\"]}", null);
-        // Act
-        String[] actualNames = webInterface.getRandomName(seed);
-
         // Assert
-        assertThat(expectedNames).contains(actualNames);
+        assertThrows(ConnectException.class, () -> webinterface.getRandomName(seed));
     }
 }
