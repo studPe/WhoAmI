@@ -8,7 +8,7 @@
 
 Die WhoAmI Webanwendung ist eine interaktive Webapp, die Flask für das Backend und Vaadin für das Frontend nutzt. Mit dieser Webapp kann "Wer bin ich ?" / bzw. "20 Questions" im Browser gespielt werden.
 
-Ziel der Anwendung ist die Entwicklung einer Anwendung, die abgesichert ist Anhand einiger der Qualitätsmerkmale nach ISO 25010. Die Anwendung muss, dazu auch einen externe Schnittstelle ansprechen, diese API wurde für den Zweck der Anwendung eingens mit Flask umgesetzt.
+Ziel der Anwendung ist die Entwicklung einer Anwendung, die abgesichert ist Anhand einiger der Qualitätsmerkmale nach ISO 25010. Die Anwendung muss, dazu auch einen externe Schnittstelle ansprechen, diese API wurde für den Zweck der Anwendung eingens mit Flask umgesetzt, die als DatenQuelle ein JSON File nutzt.
 
 | Use Case | Beschreibung | Ziele | Beteiligte |
 |----------|---------------|-------|------------|
